@@ -1,0 +1,55 @@
+{% comment %} 
+   This is a section to display wave animation on the page.
+   1. In schema, user could customize waves direaction by setting "wave_direction" to "Forward" or "Reverse"
+   2. In schema, user could customize waves color by adding a background color to "wave_color"
+{% endcomment %}
+{{ 'section_wave_animation.css' | asset_url | stylesheet_tag }}
+{{ 'wave-calculate.js' | asset_url | script_tag}}
+
+
+{% if template.scripts contains 'wave-calculate.js' %}
+  <!-- if wave-calculate.js has already been loaded, do nothing -->
+{% else %}
+  <svg class="wave-{{ section.settings.wave_direction }}" width="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <path class="wave_path" d="" fill="{{ section.settings.wave_color }}"/>
+  </svg>
+  {{ 'wave-calculate.js' | asset_url | script_tag }}
+{% endif %}
+
+
+{% schema %}
+{
+  "name": "Waves Animation",
+  "settings": [
+    {
+      "type": "select",
+      "id": "wave_direction",
+      "label": "Direction of Waves",
+      "options": [
+        {
+          "value": "forward",
+          "label": "Forward"
+        },
+        {
+          "value": "reverse",
+          "label": "Reverse"
+        }
+      ],
+      "default": "forward"
+    },
+    {
+      "type": "text",
+      "id": "wave_color",
+      "label": "The Color of Waves"
+    }
+  ],
+  "presets": [
+    {
+      "name": "wave animation",
+      "category": "Added by shopifyShanti"
+    }
+  ]
+}
+{% endschema %}
+
+

@@ -1,0 +1,136 @@
+.product-details {
+  margin: 0;
+  padding: 3% 5%;
+}
+
+.details {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+
+.detail-grid-item {
+  padding: 0 5%;
+  margin: 2% auto;
+}
+
+.detail-grid-item h3 {
+  margin: 42px 0;
+}
+
+.detail-grid-item .nutrition_info_table {
+  display: grid;
+}
+
+.nutrition_info_table table {
+  box-shadow: none !important;
+}
+
+.nutrition_info_table table tr,
+.nutrition_info_table table th,
+.nutrition_info_table table td{
+  border: 0px;
+  padding: 0.2rem;
+}
+
+.nutrition_info_table table tbody tr td p {
+    margin: 0 !important;
+}
+
+
+/* Initial image container css is here */
+.detail_image_container {
+    position: inherit;
+    width: 100%;
+    margin-top: 15px;
+    padding: 0 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mobile_detail_image_container_up {
+    display: none;
+}
+
+.detail_image_container .image-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.detail_image_container img {
+  width: auto;
+  height: 65px; 
+}
+
+
+.image-item p {
+  font-size: 1.5rem;
+}
+
+
+
+@media screen and (max-width: 750px) {
+  
+    .image-item p {
+      font-size: 0.7rem;
+    }
+  
+    .mobile_detail_image_container_up img {
+      width: auto; 
+      height: 50px; 
+    }
+
+
+    .detail_image_container {
+        display: none;
+    }
+
+    .mobile_detail_image_container_up {
+      position: inherit;
+      width: 100%;
+      margin-top: 15px;
+      padding: 0 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .mobile_detail_image_container_up .image-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+
+}
+
+@media screen and (min-width: 1051px) and (max-width: 1250px) {
+    .image-item p {
+      font-size: 1.2rem;
+    }
+  
+    .detail_image_container img {
+      width: auto;
+      height: 60px; 
+    }
+}
+
+@media screen and (min-width: 751px) and (max-width: 1050px) {
+  .image-item p {
+    font-size: 0.8rem;
+  }
+
+  .detail_image_container img {
+    width: auto;
+    height: 50px; 
+  }
+}
+
+
+
+  

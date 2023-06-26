@@ -1,0 +1,37 @@
+/* The css file to set all css in section/wave-animation.liquid  */
+.wave-forward {
+  margin-bottom: -2%;
+  margin-top: -5%;
+}
+.wave-reverse {
+  transform: rotate(180deg);
+}
+@media screen and (min-width: 840px) and (max-width: 1200px) {
+.wave-reverse {
+  margin-bottom: -4%;
+  transform: rotate(180deg);
+}
+}
+
+@media screen and (min-width: 550px) and (max-width: 839px) {
+  .wave-forward {
+    margin-bottom: -2.5%;
+    margin-top: -10%;
+  }
+
+  .wave-reverse {
+    margin-bottom: -13%;
+  }
+}
+
+@media screen and (max-width: 549px) {
+  .wave-forward {
+    margin-bottom: -2.5%;
+    margin-top: -10%;
+  }
+  
+  .wave-reverse {
+    margin-bottom: -20%;
+  }
+}
+

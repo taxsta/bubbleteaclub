@@ -1,0 +1,1123 @@
+{% comment %}
+  Renders cart drawer
+
+  Usage:
+  {% render 'cart-drawer' %}
+{% endcomment %}
+
+<script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+<script>
+  
+                      function addGift(){
+                      const addGiftBtn = document.querySelector(".add-gift-btn");
+  const cartItems = document.querySelector("cart-drawer-items");
+  cartItems.updateQuantity(40623943155773, 1, 1, "Free Gift");
+                      }
+  function addGift2(){
+                      let addGiftBtn = document.querySelector(".add-gift-btn2");
+  let cartItems = document.querySelector("cart-drawer-items");
+  cartItems.updateQuantity(40528338255933, 1, 1, "Free Gift");
+                      }
+                function removeGift2(){
+                let updates = {
+                        updates: {
+                        40528338255933:0
+                        }
+                          }
+                        fetch(window.Shopify.routes.root + 'cart/update.js', {
+                          method: 'POST',
+                          credentials: 'same-origin',
+                          headers: {
+                            'Content-Type': 'application/json',
+                            'X-Requested-With':'xmlhttprequest' /* XMLHttpRequest is ok too, it's case insensitive */
+
+                          },
+                          body: JSON.stringify(updates)
+                        })
+                        .then(response => {
+                        window.location.reload();
+                          return response.json();
+                        })
+                        .catch((error) => {
+                          console.error('Error:', error);
+                        });
+                }
+</script>
+{% assign freeShippingThreshold = 7900.0 %}
+{% assign awayFromFreeShippingValue = freeShippingThreshold | minus: cart.total_price %}
+{% assign awayFromFreeShippingDollar = cart.total_price | divided_by: 7900.0 %}
+{% assign awayFromFreeShippingPercent = awayFromFreeShippingDollar | times: 100 %}
+{% assign awayFromFreeShippingValueMoney = awayFromFreeShippingValue | money %}
+{% assign freeGiftThreshold = 10000.0 %}
+{% assign awayFromFreeGiftValue = freeGiftThreshold | minus: cart.total_price %}
+{% assign awayFromFreeGiftDollar = cart.total_price | divided_by: 10000.0 %}
+{% assign awayFromFreeGiftPercentPre = awayFromFreeGiftDollar | times: 100 %}
+{% assign awayFromFreeGiftPercent = awayFromFreeGiftPercentPre | minus: 8 %}
+{% assign awayFromFreeGiftValueMoney = awayFromFreeGiftValue | money %}
+{% assign freeShippingOfFreeGift = freeShippingThreshold | divided_by: freeGiftThreshold %}
+{% assign freeShippingOfFreeGiftPercent = freeShippingOfFreeGift | times: 100 %}
+{% assign freeGiftThreshold_gift_2 = 14000.0 %}
+{% assign awayFromFreeGiftValue_gift_2 = freeGiftThreshold_gift_2 | minus: cart.total_price %}
+{% assign awayFromFreeGiftDollar_gift_2 = cart.total_price | divided_by: 14000.0 %}
+{% assign awayFromFreeGiftPercentPre_gift_2 = awayFromFreeGiftDollar_gift_2 | times: 100 %}
+{% assign awayFromFreeGiftPercent_gift_2 = awayFromFreeGiftPercentPre_gift_2 | minus: 8 %}
+{% assign awayFromFreeGiftValueMoney_gift_2 = awayFromFreeGiftValue_gift_2 | money %}
+{% assign freeShippingOfFreeGift_gift_2 = freeShippingThreshold | divided_by: freeGiftThreshold_gift_2 %}
+{% assign freeShippingOfFreeGiftPercent_gift_2 = freeShippingOfFreeGift_gift_2 | times: 100 %}
+<style>
+  h5.free-gift-title {
+    margin: 10px;
+}
+    .cart-item__discounted-prices afterpay-placement {
+      display: none;
+  }
+    .drawer {
+      visibility: hidden;
+    }
+    .progressBar{
+      width:100%;
+      background-color:#d9d9d9;
+      height:10px;
+      margin-bottom:3px;
+    }
+    .progress{
+      background-color:#CCBEDD;
+      height: 10px;
+      max-width:93%;
+      display: block;
+      transition: 0.3s ease-in;
+    }
+    .freeShippingText{
+      margin:0;
+    }
+    .free-gift-container{
+      display:flex;
+      margin:auto;
+      width: 100%;
+      border: 1px solid black;
+      padding: 5px;
+      margin-bottom:20px;
+    }
+    .gift-btn:hover{
+      cursor: pointer;
+      background-color:black !important;
+      color: white !important;
+      transition: all 0.3s;
+    }
+  .gift-btn:disabled{
+      background-color:#fee88d !important;
+      color: black !important;
+    }
+  .free-gift-container{
+  padding-bottom:10px;
+}
+.free-gift-wrapper{
+  margin: auto; 
+  width: 100%;
+  text-align:center;
+}
+.progress-tiers{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom:10px;
+  }
+  .tier-title{
+  width: fit-content;
+  white-space:nowrap;
+  font-size:12px;
+    position:relative;
+  }
+  .tier-progress{
+    display: block;
+    border-right: 1px solid black;
+    position: absolute;
+    height: 10px;
+  }
+  .gift-progress{
+    z-index:1;
+  }
+  .shipping-progress{
+    z-index:2;
+  }
+  .gift2-progress{
+  }
+</style>
+
+<cart-drawer class="drawer{% if cart == empty %} is-empty{% endif %}">
+  <div id="CartDrawer" class="cart-drawer">
+    <div id="CartDrawer-Overlay" class="cart-drawer__overlay"></div>
+    <div
+      class="drawer__inner"
+      role="dialog"
+      aria-modal="true"
+      aria-label="{{ 'sections.cart.title' | t }}"
+      tabindex="-1"
+    >
+      {%- if cart == empty -%}
+        <div class="drawer__inner-empty">
+          <div class="cart-drawer__warnings center{% if settings.cart_drawer_collection != blank %} cart-drawer__warnings--has-collection{% endif %}">
+            <div class="cart-drawer__empty-content">
+              <h2 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h2>
+              <button
+                class="drawer__close"
+                type="button"
+                onclick="this.closest('cart-drawer').close()"
+                aria-label="{{ 'accessibility.close' | t }}"
+              >
+                {% render 'icon-close' %}
+              </button>
+              <a href="{{ routes.all_products_collection_url }}" class="button">
+                {{ 'general.continue_shopping' | t }}
+              </a>
+
+              {%- if shop.customer_accounts_enabled and customer == null -%}
+                <p class="cart__login-title h3">{{ 'sections.cart.login.title' | t }}</p>
+                <p class="cart__login-paragraph">
+                  {{ 'sections.cart.login.paragraph_html' | t: link: routes.account_login_url }}
+                </p>
+              {%- endif -%}
+            </div>
+          </div>
+          {%- if settings.cart_drawer_collection != blank -%}
+            <div class="cart-drawer__collection">
+              {% render 'card-collection', card_collection: settings.cart_drawer_collection, columns: 1 %}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+      <div class="drawer__header">
+        <h2 class="drawer__heading">{{ 'sections.cart.title' | t }}</h2>
+        <button
+          class="drawer__close"
+          type="button"
+          onclick="this.closest('cart-drawer').close()"
+          aria-label="{{ 'accessibility.close' | t }}"
+        >
+          {% render 'icon-close' %}
+        </button>
+      </div>
+      {% if cart == empty %}
+      {% else %}
+        <h3 style="margin:0">Unlock Free Gifts Below</h3>
+        {% if awayFromFreeGiftValue_gift_2 <= 0 %}
+          <p class="freeShippingText"><strong>Yay!</strong> You've unlocked a <strong>free cup</strong><br />(Remember to add it to cart)</p>
+         <style>
+      .gift-progress{
+        display:block;
+    }
+    </style>
+          {% elsif awayFromFreeGiftValue_gift_2 <= 3999 %}
+          <p class="freeShippingText">Add {{ awayFromFreeGiftValueMoney_gift_2 }} and get your <strong>free reusable cup!</strong></p>
+     <style>
+      .gift-progress{
+        display:block;
+    }
+    </style>
+        {% elsif awayFromFreeGiftValue <= 0 %}
+          <p class="freeShippingText"><strong>Yay!</strong> You've unlocked your <strong>free gift</strong><br />(Remember to add it to cart)</p>
+         <style>
+      .gift-progress{
+        display:block;
+    }
+    </style>
+          {% elsif awayFromFreeGiftValue <= 5000 %}
+          <p class="freeShippingText">Add {{ awayFromFreeGiftValueMoney }} and get a <strong>free mystery gift!</strong></p>
+     <style>
+      .gift-progress{
+        display:block;
+    }
+    </style>
+          {% elsif awayFromFreeShippingValue <= 0 %}
+          <p class="freeShippingText">You've unlocked free shipping!</p>
+    <style>
+      .gift-progress{
+        display:block;
+    }
+    </style>
+        {% else %}
+          <p class="freeShippingText">
+            Almost there! Add {{ awayFromFreeShippingValueMoney }} to unlock <strong>free shipping</strong>
+          </p>
+        {% endif %}
+        <div class="progressBar">
+          <span class="tier-progress shipping-progress" style="width:30%">
+            <span style="width:{{ awayFromFreeShippingPercent }}%; background-color:#fee88d;" class="progress"></span>
+          </span>
+          <span class="tier-progress gift-progress" style="width:65%">
+          <span style="width:{{ awayFromFreeGiftPercent }}%; background-color:#fee88d;" class="progress"></span>
+          </span>
+          <span class="tier-progress gift2-progress" style="width:100%">
+          <span style="width:{{ awayFromFreeGiftPercent_gift_2 }}%; background-color:#fee88d;" class="progress"></span>
+          </span>
+        </div>
+        <div class="progress-tiers">
+        <span class="tier-title" style="left:20%">Free Shipping</span>
+        <span class="tier-title" style="left:12%">Free Mystery Gift</span>
+        <span class="tier-title">Free Cup</span>
+        </div>
+      {% endif %}
+      <cart-drawer-items
+        {% if cart == empty %}
+          class=" is-empty"
+        {% endif %}
+      >
+        <form
+          action="{{ routes.cart_url }}"
+          id="CartDrawer-Form"
+          class="cart__contents cart-drawer__form"
+          method="post"
+        >
+          <div id="CartDrawer-CartItems" class="drawer__contents js-contents">
+            {%- if cart != empty -%}
+              <div class="drawer__cart-items-wrapper">
+                {% if cart.total_price == 0 %}
+                {% else %}
+                  <div class="free-gift-wrapper">
+                    {% if 0 <= awayFromFreeGiftValue %}
+                      {% for item in cart.items %}
+                        {% if item.product.id == 7002448035901 %}
+                          <script>
+                            removeGift2();
+                          </script>
+                        {% endif %}
+                        {% if item.product.id == 7035530707005 %}
+                          <script>
+                            removeGift();
+                          </script>
+                        {% endif %}
+                      {% endfor %}
+                      <div style="text-align:center;" class="free-gift-container">
+                        <div>
+                          <h5 class="free-gift-title">
+                            Claim your free mystery gift <br>
+                          </h5>
+                      </div>
+                      <img
+                          src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/mysterygift_1.png?v=1684452906"
+                          width="100px;"
+                          style="margin:auto;"
+                        >
+                      </div>
+                      <div style="text-align:center;" class="free-gift-container">
+                        <div>
+                          <h5 class="free-gift-title">
+                            Claim your free gift <br>
+                            <span style="font-size:14px;">(Valued at $24.95)</span>
+                          </h5>
+                          <h6 style="font-size:13px; margin: 10px 0;">
+                            It's our best-selling<br>
+                            Reusable Bubble Tea Cup!
+                          </h6>
+                          <h6 style="font-size:12px; margin: 10px 0;">Please note: Colour will be chosen at random</h6>
+                        </div>
+                        <img
+                          src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/stopmotioncup.gif?v=1678065377"
+                          width="150px;"
+                          style="margin:auto;"
+                        >
+                      </div>
+                    {% elsif awayFromFreeGiftValue <= 0 and 0 <= awayFromFreeGiftValue_gift_2 %}
+                      {% assign gift_not_in_cart = true %}
+                      {% for item in cart.items %}
+                        {% if item.product.id == 7002448035901 %}
+                          <script>
+                            removeGift();
+                          </script>
+                        {% endif %}
+                        {% if gift_not_in_cart == true %}
+                          {% if item.product.id == 7035530707005 %}
+                            {% assign gift_not_in_cart = false %}
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                      {% if gift_not_in_cart == true %}
+                        <div style="text-align:center;" class="free-gift-container">
+                        <div>
+                          <h5 class="free-gift-title">
+                            Claim your free mystery gift
+                          </h5>
+                        
+                        <button
+                          style="padding:10px;color:black;background-color:white;border:1px solid black; margin:auto;"
+                          class="gift-btn add-gift-btn btn btn btn-default"
+                          onclick="event.preventDefault();addGift()"
+                        >
+                          Add Gift
+                        </button>
+                        </div>
+                        <img
+                          src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/mysterygift_1.png?v=1684452906"
+                          width="100px;"
+                          style="margin:auto;"
+                        >
+                      </div>
+                         <div style="text-align:center;" class="free-gift-container">
+                        <div>
+                          <h5 class="free-gift-title">
+                            Claim your free Reusable Cup <br>
+                            <span style="font-size:14px;">(Valued at $24.95)</span>
+                          </h5>
+                          <h6 style="font-size:12px; margin: 10px 0;">You will get a black Reusable Cup!</h6>
+                        </div>
+                        <img
+                          src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/stopmotioncup.gif?v=1678065377"
+                          width="150px;"
+                          style="margin:auto;"
+                        >
+                      </div>
+                      {% else %}
+                        <div style="text-align:center;" class="free-gift-container">
+                        <div>
+                          <h5 class="free-gift-title">
+                            Claim your free mystery gift
+                          </h5>
+                        
+                        <button
+                          style="padding:10px;color:black;background-color:white;border:1px solid black; margin:auto;"
+                          class="gift-btn add-gift-btn btn btn btn-default"
+                          disabled
+                        >
+                          Claimed
+                        </button>
+                        </div>
+                        <img
+                          src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/mysterygift_1.png?v=1684452906"
+                          width="100px;"
+                          style="margin:auto;"
+                        >
+                      </div>
+                         <div style="text-align:center;" class="free-gift-container">
+                        <div>
+                          <h5 class="free-gift-title">
+                            Claim your free Reusable Cup <br>
+                            <span style="font-size:14px;">(Valued at $24.95)</span>
+                          </h5>
+                          <h6 style="font-size:12px; margin: 10px 0;">You will get a black Reusable Cup!</h6>
+                        </div>
+                        <img
+                          src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/stopmotioncup.gif?v=1678065377"
+                          width="150px;"
+                          style="margin:auto;"
+                        >
+                      </div>
+                        {% endif %}
+                      {% elsif awayFromFreeGiftValue_gift_2 <= 0 %}
+                      {% assign gift_not_in_cart = true %}
+                      {% assign gift_not_in_cart_2 = true %}
+                      {% for item in cart.items %}
+                          {% if item.product.id == 7002448035901 %}
+                            {% assign gift_not_in_cart_2 = false %}
+                          {% endif %}
+                          {% if item.product.id == 7035530707005 %}
+                            {% assign gift_not_in_cart = false %}
+                          {% endif %}
+                      {% endfor %}
+                      {% if gift_not_in_cart == true and gift_not_in_cart_2 == true %}
+                        <div style="text-align:center;" class="free-gift-container">
+                        <div>
+                          <h5 class="free-gift-title">
+                            Claim your free mystery gift
+                          </h5>
+                        
+                        <button
+                          style="padding:10px;color:black;background-color:white;border:1px solid black; margin:auto;"
+                          class="gift-btn add-gift-btn btn btn btn-default"
+                          onclick="event.preventDefault();addGift()"
+                        >
+                          Add Gift
+                        </button>
+                        </div>
+                        <img
+                          src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/mysterygift_1.png?v=1684452906"
+                          width="100px;"
+                          style="margin:auto;"
+                        >
+                      </div>
+                         <div style="text-align:center;" class="free-gift-container">
+                        <div>
+                          <h5 class="free-gift-title">
+                            Claim your free Reusable Cup <br>
+                            <span style="font-size:14px;">(Valued at $24.95)</span>
+                          </h5>
+                          <h6 style="font-size:12px; margin: 10px 0;">You will get a black Reusable Cup!</h6>
+                        
+                        <button
+                          style="padding:10px;color:black;background-color:white;border:1px solid black; margin:auto;"
+                          class="gift-btn add-gift-btn2 btn btn btn-default"
+                          onclick="event.preventDefault();addGift2()"
+                        >
+                          Add Gift
+                        </button>
+                        </div>
+                        <img
+                          src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/stopmotioncup.gif?v=1678065377"
+                          width="150px;"
+                          style="margin:auto;"
+                        >
+                      </div>
+                      {% elsif gift_not_in_cart_2 == true and gift_not_in_cart == false %}
+                        <div style="text-align:center;" class="free-gift-container">
+                        <div>
+                          <h5 class="free-gift-title">
+                            You've claimed your free mystery gift
+                          </h5>
+                        </div>
+                        <img
+                          src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/mysterygift_1.png?v=1684452906"
+                          width="100px;"
+                          style="margin:auto;"
+                        >
+                      </div>
+                         <div style="text-align:center;" class="free-gift-container">
+                        <div>
+                          <h5 class="free-gift-title">
+                            Claim your free Reusable Cup <br>
+                            <span style="font-size:14px;">(Valued at $24.95)</span>
+                          </h5>
+                          <h6 style="font-size:12px; margin: 10px 0;">You will get a black Reusable Cup!</h6>
+                        
+                        <button
+                          style="padding:10px;color:black;background-color:white;border:1px solid black; margin:auto;"
+                          class="gift-btn add-gift-btn2 btn btn btn-default"
+                          onclick="event.preventDefault();addGift2()"
+                        >
+                          Add Gift
+                        </button>
+                        </div>
+                        <img
+                          src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/stopmotioncup.gif?v=1678065377"
+                          width="150px;"
+                          style="margin:auto;"
+                        >
+                      </div>
+                      {% elsif gift_not_in_cart == true and gift_not_in_cart_2 == false %}
+                        <div style="text-align:center;" class="free-gift-container">
+                        <div>
+                          <h5 class="free-gift-title">
+                            Claim your free mystery gift
+                          </h5>
+                                                
+                        <button
+                          style="padding:10px;color:black;background-color:white;border:1px solid black; margin:auto;"
+                          class="gift-btn add-gift-btn btn btn btn-default"
+                          onclick="event.preventDefault();addGift()"
+                        >
+                          Add Gift
+                        </button>
+                        </div>
+                        <img
+                          src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/mysterygift_1.png?v=1684452906"
+                          width="100px;"
+                          style="margin:auto;"
+                        >
+                      </div>
+                         <div style="text-align:center;" class="free-gift-container">
+                        <div>
+                          <h5 class="free-gift-title">
+                            You've claimed your free Reusable Cup <br>
+                            <span style="font-size:14px;">(Valued at $24.95)</span>
+                          </h5>
+                          <h6 style="font-size:12px; margin: 10px 0;">You will get a black Reusable Cup!</h6>
+                        </div>
+                        <img
+                          src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/stopmotioncup.gif?v=1678065377"
+                          width="150px;"
+                          style="margin:auto;"
+                        >
+                      </div>
+                      {% endif %}
+                    {% endif %}
+                  
+                  </div>
+                {% endif %}
+                <table class="cart-items" role="table">
+                  <thead role="rowgroup">
+                    <tr role="row">
+                      <th id="CartDrawer-ColumnProductImage" role="columnheader">
+                        <span class="visually-hidden">{{ 'sections.cart.headings.image' | t }}</span>
+                      </th>
+                      <th
+                        id="CartDrawer-ColumnProduct"
+                        class="caption-with-letter-spacing"
+                        scope="col"
+                        role="columnheader"
+                      >
+                        {{ 'sections.cart.headings.product' | t }}
+                      </th>
+                      <th
+                        id="CartDrawer-ColumnTotal"
+                        class="right caption-with-letter-spacing"
+                        scope="col"
+                        role="columnheader"
+                      >
+                        {{ 'sections.cart.headings.total' | t }}
+                      </th>
+                      <th id="CartDrawer-ColumnQuantity" role="columnheader">
+                        <span class="visually-hidden">{{ 'sections.cart.headings.quantity' | t }}</span>
+                      </th>
+                    </tr>
+                  </thead>
+
+                  <tbody role="rowgroup">
+                    {%- for item in cart.items -%}
+                      {% if item.title contains 'FREE GIFT - ' %}
+                        <tr id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="cart-item" role="row">
+                          <td class="cart-item__media" role="cell" headers="CartDrawer-ColumnProductImage">
+                            {% if item.image %}
+                              <img
+                                class="cart-item__image"
+                                src="{{ item.image | image_url: width: 300 }}"
+                                alt="{{ item.image.alt | escape }}"
+                                loading="lazy"
+                                width="150"
+                                height="{{ 150 | divided_by: item.image.aspect_ratio | ceil }}"
+                              >
+                            {% endif %}
+                          </td>
+
+                          <td class="cart-item__details" role="cell" headers="CartDrawer-ColumnProduct">
+                            {%- if settings.show_vendor -%}
+                              <p class="caption-with-letter-spacing light">{{ item.product.vendor }}</p>
+                            {%- endif -%}
+
+                            <h4 class="cart-item__name h4 break">{{ item.product.title }}</h4>
+
+                            {%- if item.original_price != item.final_price -%}
+                              <div class="cart-item__discounted-prices">
+                                <span class="visually-hidden">
+                                  {{ 'products.product.price.regular_price' | t }}
+                                </span>
+                                <s class="cart-item__old-price product-option">
+                                  {{- item.original_price | money -}}
+                                </s>
+                                <span class="visually-hidden">
+                                  {{ 'products.product.price.sale_price' | t }}
+                                </span>
+                                <strong class="cart-item__final-price product-option">
+                                  {{ item.final_price | money }}
+                                </strong>
+                              </div>
+                            {%- else -%}
+                              <div class="product-option">
+                                {{ item.original_price | money }}
+                              </div>
+                            {%- endif -%}
+
+                            {%- if item.product.has_only_default_variant == false
+                              or item.properties.size != 0
+                              or item.selling_plan_allocation != null
+                            -%}
+                              <dl>
+                                {%- if item.product.has_only_default_variant == false -%}
+                                  {%- for option in item.options_with_values -%}
+                                    <div class="product-option">
+                                      <!-- <dt>{{ option.name }}: </dt> -->
+                                      <dd>
+                                        {{ option.value -}}
+                                        {%- unless forloop.last %}, {% endunless %}
+                                      </dd>
+                                    </div>
+                                  {%- endfor -%}
+                                {%- endif -%}
+
+                                {%- for property in item.properties -%}
+                                  {%- assign property_first_char = property.first | slice: 0 -%}
+                                  {%- if property.last != blank and property_first_char != '_' -%}
+                                    <div class="product-option">
+                                      <dt>{{ property.first }}:</dt>
+                                      <dd>
+                                        {%- if property.last contains '/uploads/' -%}
+                                          <a
+                                            href="{{ property.last }}"
+                                            class="link"
+                                            target="_blank"
+                                            aria-describedby="a11y-new-window-message"
+                                          >
+                                            {{ property.last | split: '/' | last }}
+                                          </a>
+                                        {%- else -%}
+                                          {{ property.last }}
+                                        {%- endif -%}
+                                      </dd>
+                                    </div>
+                                  {%- endif -%}
+                                {%- endfor -%}
+                              </dl>
+
+                              <p class="product-option">{{ item.selling_plan_allocation.selling_plan.name }}</p>
+                            {%- endif -%}
+
+                            <ul
+                              class="discounts list-unstyled"
+                              role="list"
+                              aria-label="{{ 'customer.order.discount' | t }}"
+                            >
+                              {%- for discount in item.discounts -%}
+                                <li class="discounts__discount">
+                                  {%- render 'icon-discount' -%}
+                                  {{ discount.title }}
+                                </li>
+                              {%- endfor -%}
+                            </ul>
+                          </td>
+
+                          <td class="cart-item__totals right" role="cell" headers="CartDrawer-ColumnTotal">
+                            <div class="loading-overlay hidden">
+                              <div class="loading-overlay__spinner">
+                                <svg
+                                  aria-hidden="true"
+                                  focusable="false"
+                                  role="presentation"
+                                  class="spinner"
+                                  viewBox="0 0 66 66"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                                </svg>
+                              </div>
+                            </div>
+
+                            <div class="cart-item__price-wrapper">
+                              {%- if item.original_line_price != item.final_line_price -%}
+                                <div class="cart-item__discounted-prices">
+                                  <span class="visually-hidden">
+                                    {{ 'products.product.price.regular_price' | t }}
+                                  </span>
+                                  <s class="cart-item__old-price price price--end">
+                                    {{ item.original_line_price | money }}
+                                  </s>
+                                  <span class="visually-hidden">
+                                    {{ 'products.product.price.sale_price' | t }}
+                                  </span>
+                                  <span class="price price--end">
+                                    {{ item.final_line_price | money }}
+                                  </span>
+                                </div>
+                              {%- else -%}
+                                <span class="price price--end">
+                                  {{ item.original_line_price | money }}
+                                </span>
+                              {%- endif -%}
+
+                              {%- if item.variant.available and item.unit_price_measurement -%}
+                                <div class="unit-price caption">
+                                  <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
+                                  {{ item.variant.unit_price | money }}
+                                  <span aria-hidden="true">/</span>
+                                  <span class="visually-hidden"
+                                    >&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span
+                                  >
+                                  {%- if item.variant.unit_price_measurement.reference_value != 1 -%}
+                                    {{- item.variant.unit_price_measurement.reference_value -}}
+                                  {%- endif -%}
+                                  {{ item.variant.unit_price_measurement.reference_unit }}
+                                </div>
+                              {%- endif -%}
+                            </div>
+                          </td>
+
+                          <td class="cart-item__quantity" role="cell" headers="CartDrawer-ColumnQuantity">
+                            <div class="cart-item__quantity-wrapper">
+                              <quantity-input class="quantity">
+                                <input
+                                  class="quantity__input"
+                                  disabled
+                                  type="number"
+                                  name="updates[]"
+                                  value="{{ item.quantity }}"
+                                  min="0"
+                                  aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
+                                  id="Drawer-quantity-{{ item.index | plus: 1 }}"
+                                  data-index="{{ item.index | plus: 1 }}"
+                                  data-variant="{{ item.variant.id }}"
+                                >
+                              </quantity-input>
+
+                              <cart-remove-button
+                                id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
+                                data-index="{{ item.index | plus: 1 }}"
+                                data-variant="{{ item.variant.id }}"
+                              >
+                                <button
+                                  type="button"
+                                  class="button button--tertiary"
+                                  aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
+                                >
+                                  {% render 'icon-remove' %}
+                                </button>
+                              </cart-remove-button>
+                            </div>
+
+                            <div
+                              id="CartDrawer-LineItemError-{{ item.index | plus: 1 }}"
+                              class="cart-item__error"
+                              role="alert"
+                            >
+                              <small class="cart-item__error-text"></small>
+                              <svg
+                                aria-hidden="true"
+                                focusable="false"
+                                role="presentation"
+                                class="icon icon-error"
+                                viewBox="0 0 13 13"
+                              >
+                                <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
+                                <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
+                                <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
+                                <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+                              </svg>
+                            </div>
+                          </td>
+                        </tr>
+                      {% else %}
+                        <tr id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="cart-item" role="row">
+                          <td class="cart-item__media" role="cell" headers="CartDrawer-ColumnProductImage">
+                            {% if item.image %}
+                              {% comment %} Leave empty space due to a:empty CSS display: none rule {% endcomment %}
+                              <a href="{{ item.url }}" class="cart-item__link" tabindex="-1" aria-hidden="true"> </a>
+                              <img
+                                class="cart-item__image"
+                                src="{{ item.image | image_url: width: 300 }}"
+                                alt="{{ item.image.alt | escape }}"
+                                loading="lazy"
+                                width="150"
+                                height="{{ 150 | divided_by: item.image.aspect_ratio | ceil }}"
+                              >
+                            {% endif %}
+                          </td>
+
+                          <td class="cart-item__details" role="cell" headers="CartDrawer-ColumnProduct">
+                            {%- if settings.show_vendor -%}
+                              <p class="caption-with-letter-spacing light">{{ item.product.vendor }}</p>
+                            {%- endif -%}
+
+                            <a href="{{ item.url }}" class="cart-item__name h4 break">
+                              {{- item.product.title | escape -}}
+                            </a>
+
+                            {%- if item.original_price != item.final_price -%}
+                              <div class="cart-item__discounted-prices">
+                                <span class="visually-hidden">
+                                  {{ 'products.product.price.regular_price' | t }}
+                                </span>
+                                <s class="cart-item__old-price product-option">
+                                  {{- item.original_price | money -}}
+                                </s>
+                                <span class="visually-hidden">
+                                  {{ 'products.product.price.sale_price' | t }}
+                                </span>
+                                <strong class="cart-item__final-price product-option">
+                                  {{ item.final_price | money }}
+                                </strong>
+                              </div>
+                            {%- else -%}
+                              <div class="product-option">
+                                {{ item.original_price | money }}
+                              </div>
+                            {%- endif -%}
+
+                            {%- if item.product.has_only_default_variant == false
+                              or item.properties.size != 0
+                              or item.selling_plan_allocation != null
+                            -%}
+                              <dl>
+                                {%- if item.product.has_only_default_variant == false -%}
+                                  {%- for option in item.options_with_values -%}
+                                    <div class="product-option">
+                                      <!-- <dt>{{ option.name }}: </dt> -->
+                                      <dd>
+                                        {{ option.value -}}
+                                        {%- unless forloop.last %}, {% endunless %}
+                                      </dd>
+                                    </div>
+                                  {%- endfor -%}
+                                {%- endif -%}
+
+                                {%- for property in item.properties -%}
+                                  {%- assign property_first_char = property.first | slice: 0 -%}
+                                  {%- if property.last != blank and property_first_char != '_' -%}
+                                    <div class="product-option">
+                                      <dt>{{ property.first }}:</dt>
+                                      <dd>
+                                        {%- if property.last contains '/uploads/' -%}
+                                          <a
+                                            href="{{ property.last }}"
+                                            class="link"
+                                            target="_blank"
+                                            aria-describedby="a11y-new-window-message"
+                                          >
+                                            {{ property.last | split: '/' | last }}
+                                          </a>
+                                        {%- else -%}
+                                          {{ property.last }}
+                                        {%- endif -%}
+                                      </dd>
+                                    </div>
+                                  {%- endif -%}
+                                {%- endfor -%}
+                              </dl>
+
+                              <p class="product-option">{{ item.selling_plan_allocation.selling_plan.name }}</p>
+                            {%- endif -%}
+
+                            <ul
+                              class="discounts list-unstyled"
+                              role="list"
+                              aria-label="{{ 'customer.order.discount' | t }}"
+                            >
+                              {%- for discount in item.discounts -%}
+                                <li class="discounts__discount">
+                                  {%- render 'icon-discount' -%}
+                                  {{ discount.title }}
+                                </li>
+                              {%- endfor -%}
+                            </ul>
+                          </td>
+
+                          <td class="cart-item__totals right" role="cell" headers="CartDrawer-ColumnTotal">
+                            <div class="loading-overlay hidden">
+                              <div class="loading-overlay__spinner">
+                                <svg
+                                  aria-hidden="true"
+                                  focusable="false"
+                                  role="presentation"
+                                  class="spinner"
+                                  viewBox="0 0 66 66"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                                </svg>
+                              </div>
+                            </div>
+
+                            <div class="cart-item__price-wrapper">
+                              {%- if item.original_line_price != item.final_line_price -%}
+                                <div class="cart-item__discounted-prices">
+                                  <span class="visually-hidden">
+                                    {{ 'products.product.price.regular_price' | t }}
+                                  </span>
+                                  <s class="cart-item__old-price price price--end">
+                                    {{ item.original_line_price | money }}
+                                  </s>
+                                  <span class="visually-hidden">
+                                    {{ 'products.product.price.sale_price' | t }}
+                                  </span>
+                                  <span class="price price--end">
+                                    {{ item.final_line_price | money }}
+                                  </span>
+                                </div>
+                              {%- else -%}
+                                <span class="price price--end">
+                                  {{ item.original_line_price | money }}
+                                </span>
+                              {%- endif -%}
+
+                              {%- if item.variant.available and item.unit_price_measurement -%}
+                                <div class="unit-price caption">
+                                  <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
+                                  {{ item.variant.unit_price | money }}
+                                  <span aria-hidden="true">/</span>
+                                  <span class="visually-hidden"
+                                    >&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span
+                                  >
+                                  {%- if item.variant.unit_price_measurement.reference_value != 1 -%}
+                                    {{- item.variant.unit_price_measurement.reference_value -}}
+                                  {%- endif -%}
+                                  {{ item.variant.unit_price_measurement.reference_unit }}
+                                </div>
+                              {%- endif -%}
+                            </div>
+                          </td>
+
+                          <td class="cart-item__quantity" role="cell" headers="CartDrawer-ColumnQuantity">
+                            <div class="cart-item__quantity-wrapper">
+                              <quantity-input class="quantity">
+                                <button class="quantity__button no-js-hidden" name="minus" type="button">
+                                  <span class="visually-hidden">
+                                    {{-
+                                      'products.product.quantity.decrease'
+                                      | t: product: item.product.title
+                                      | escape
+                                    -}}
+                                  </span>
+                                  {% render 'icon-minus' %}
+                                </button>
+                                <input
+                                  class="quantity__input"
+                                  type="number"
+                                  name="updates[]"
+                                  value="{{ item.quantity }}"
+                                  min="0"
+                                  aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
+                                  id="Drawer-quantity-{{ item.index | plus: 1 }}"
+                                  data-index="{{ item.index | plus: 1 }}"
+                                  data-variant="{{ item.variant.id }}"
+                                >
+                                <button class="quantity__button no-js-hidden" name="plus" type="button">
+                                  <span class="visually-hidden">
+                                    {{-
+                                      'products.product.quantity.increase'
+                                      | t: product: item.product.title
+                                      | escape
+                                    -}}
+                                  </span>
+                                  {% render 'icon-plus' %}
+                                </button>
+                              </quantity-input>
+
+                              <cart-remove-button
+                                id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
+                                data-index="{{ item.index | plus: 1 }}"
+                                data-variant="{{ item.variant.id }}"
+                              >
+                                <button
+                                  type="button"
+                                  class="button button--tertiary"
+                                  aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
+                                >
+                                  {% render 'icon-remove' %}
+                                </button>
+                              </cart-remove-button>
+                            </div>
+
+                            <div
+                              id="CartDrawer-LineItemError-{{ item.index | plus: 1 }}"
+                              class="cart-item__error"
+                              role="alert"
+                            >
+                              <small class="cart-item__error-text"></small>
+                              <svg
+                                aria-hidden="true"
+                                focusable="false"
+                                role="presentation"
+                                class="icon icon-error"
+                                viewBox="0 0 13 13"
+                              >
+                                <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
+                                <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
+                                <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
+                                <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+                              </svg>
+                            </div>
+                          </td>
+                        </tr>
+                      {% endif %}
+                    {%- endfor -%}
+                  </tbody>
+                </table>
+              </div>
+            {%- endif -%}
+            <p id="CartDrawer-LiveRegionText" class="visually-hidden" role="status"></p>
+            <p id="CartDrawer-LineItemStatus" class="visually-hidden" aria-hidden="true" role="status">
+              {{ 'accessibility.loading' | t }}
+            </p>
+          </div>
+          <div id="CartDrawer-CartErrors" role="alert"></div>
+        </form>
+      </cart-drawer-items>
+
+      <div class="drawer__footer">
+        {%- if settings.show_cart_note -%}
+          <details id="Details-CartDrawer">
+            <summary>
+              <span class="summary__title">
+                {{ 'sections.cart.note' | t }}
+                {% render 'icon-caret' %}
+              </span>
+            </summary>
+            <cart-note class="cart__note field">
+              <label class="visually-hidden" for="CartDrawer-Note">{{ 'sections.cart.note' | t }}</label>
+              <textarea
+                id="CartDrawer-Note"
+                class="text-area text-area--resize-vertical field__input"
+                name="note"
+                placeholder="{{ 'sections.cart.note' | t }}"
+              >{{ cart.note }}</textarea>
+            </cart-note>
+          </details>
+        {%- endif -%}
+
+        <!-- Start blocks -->
+        <!-- Subtotals -->
+
+        <div class="cart-drawer__footer" {{ block.shopify_attributes }}>
+          <div class="totals" role="status">
+            <h2 class="totals__subtotal">{{ 'sections.cart.subtotal' | t }}</h2>
+            <p class="totals__subtotal-value">{{ cart.total_price | money_with_currency }}</p>
+          </div>
+
+          <div>
+            {%- if cart.cart_level_discount_applications.size > 0 -%}
+              <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                {%- for discount in cart.cart_level_discount_applications -%}
+                  <li class="discounts__discount discounts__discount--end">
+                    {%- render 'icon-discount' -%}
+                    {{ discount.title }}
+                    (-{{ discount.total_allocated_amount | money }})
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </div>
+
+          <small class="tax-note caption-large rte">
+            {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
+              {{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+            {%- elsif cart.taxes_included -%}
+              {{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}
+            {%- elsif shop.shipping_policy.body != blank -%}
+              {{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+            {%- else -%}
+              {{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
+            {%- endif -%}
+          </small>
+        </div>
+
+        <!-- CTAs -->
+
+        <div class="cart__ctas" {{ block.shopify_attributes }}>
+          <noscript>
+            <button type="submit" class="cart__update-button button button--secondary" form="CartDrawer-Form">
+              {{ 'sections.cart.update' | t }}
+            </button>
+          </noscript>
+
+          <button
+            type="submit"
+            id="CartDrawer-Checkout"
+            class="cart__checkout-button button"
+            name="checkout"
+            form="CartDrawer-Form"
+            {% if cart == empty %}
+              disabled
+            {% endif %}
+          >
+            {{ 'sections.cart.checkout' | t }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</cart-drawer>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    function isIE() {
+      const ua = window.navigator.userAgent;
+      const msie = ua.indexOf('MSIE ');
+      const trident = ua.indexOf('Trident/');
+
+      return (msie > 0 || trident > 0);
+    }
+
+    if (!isIE()) return;
+    const cartSubmitInput = document.createElement('input');
+    cartSubmitInput.setAttribute('name', 'checkout');
+    cartSubmitInput.setAttribute('type', 'hidden');
+    document.querySelector('#cart').appendChild(cartSubmitInput);
+    document.querySelector('#checkout').addEventListener('click', function(event) {
+      document.querySelector('#cart').submit();
+    });
+  });
+</script>

@@ -1,0 +1,109 @@
+{% comment %}  
+ This is a section to implement the infinite carousel logos on the page for collection sugar-free.
+{% endcomment %}
+<style>
+
+  @keyframes slideleft {
+    from {
+      transform: translateX(0%);
+    }
+
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+  #sugar_free_carousel {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 5vh;
+    margin: 0 auto -2% auto;
+    white-space: nowrap;
+    background-color: #faf8fb;
+  }
+  
+  @media screen and (min-width: 600px) {
+      #sugar_free_carousel {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      height: 5vh;
+      margin: -3% 0;
+      white-space: nowrap;
+      background-color: #faf8fb;
+    }
+  }
+
+  .sugar_free_slides {
+    display: flex;
+    position: absolute;
+    height: 100%;
+    animation: slideleft 500s linear infinite;
+  }
+
+  .sugar_free_slide img {
+    margin: 0 30px;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
+
+
+
+<div id="sugar_free_carousel">
+  <div class="sugar_free_slides">
+    <div class="sugar_free_slide">
+      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/s2_features_img1.png"  alt="s2_img1">
+      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/s2_features_img2.png"  alt="s2_img1">
+      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/s2_features_img3.png"  alt="s2_img1">
+      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/s2_features_img1.png"  alt="s2_img1">
+      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/s2_features_img2.png"  alt="s2_img1">  
+      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/s2_features_img3.png"  alt="s2_img1">
+      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/s2_features_img1.png"  alt="s2_img1">
+      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/s2_features_img2.png"  alt="s2_img1">  
+      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/s2_features_img3.png"  alt="s2_img1">
+      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/s2_features_img1.png"  alt="s2_img1">
+      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/s2_features_img2.png"  alt="s2_img1">  
+      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/s2_features_img3.png"  alt="s2_img1">
+      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/s2_features_img1.png"  alt="s2_img1">
+      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/s2_features_img2.png"  alt="s2_img1">  
+      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/s2_features_img3.png"  alt="s2_img1">
+      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/s2_features_img1.png"  alt="s2_img1">
+      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/s2_features_img2.png"  alt="s2_img1">  
+      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/s2_features_img3.png"  alt="s2_img1">
+    </div>
+  </div>
+</div>
+
+<!-- The javascript to duplicate imgs in .sugar_free_carousel to make the carousel scroll infinitely -->
+<script>
+     for (var i = 0; i < 10; i++) {
+        var templateSlide = document.querySelector('.sugar_free_slides .sugar_free_slide');
+        var slidesContainer = document.querySelector('.sugar_free_slides');
+        
+        let clonedSlide = templateSlide.cloneNode(true);
+        
+        slidesContainer.appendChild(clonedSlide);
+    }
+</script>
+
+{% schema %}
+  {
+    "name": "Sugar-free-carousel",
+    "settings": [
+    ],
+    "presets": [
+        {
+          "name": "sugar-free-carousel",
+          "category": "Added by shopifyShanti"
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

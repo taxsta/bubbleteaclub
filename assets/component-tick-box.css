@@ -1,0 +1,65 @@
+.container {
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+}
+.container input[type="checkbox"] {
+  display: none;
+}
+.check-input {
+    display: none;
+}
+.checkbox {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #7DB7FA;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 1px;
+    transition: 0.3s all;
+}
+.checkbox svg {
+    width: 20px;
+    height: 20px;
+}
+.check-input {
+  display: none;
+}
+.check-input:checked + .checkbox {
+    background: #CCBEDD;
+    border: 2px solid #CCBEDD;
+}
+.check-input:checked + .checkbox svg path {
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+    stroke: #fff;
+    stroke-width: 3;
+    animation: check 4s forwards;
+}
+.checkbox::before {
+    content: "";
+    background: #CCBEDD66;
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    display: block;
+    width: 30px;
+    height: 30px;
+    z-index: -1;
+}
+.check-input:checked + .checkbox::before {
+    animation: ripple 0.3s;
+}
+@keyframes check {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+@keyframes ripple {
+    to {
+        transform: scale(1);
+    }
+}

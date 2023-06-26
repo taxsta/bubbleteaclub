@@ -1,0 +1,364 @@
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.karangoyal.cc/styles.css?v=8">
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+<style>
+  #section_1{
+    background-color:{{section.settings.bg_color}} !important;
+  }
+</style>
+<div class="suger-free">
+    <!-- intro_section_1  -->
+    <section id="section_1">
+        <div class="container">
+            <div class="s1_product_img_cont {% if product.images.size > 2 %}autoplay{% endif %}">
+              {% for image in product.images %}
+                {% unless forloop.first %}
+                    <img src="{{ image.src | img_url:'master' }}" alt="product_main_img">
+                {% endunless %}
+              {% endfor %}
+            </div>
+            <div class="s1_product_content_cont">
+                <ul>
+                    <li>Home</li>
+                    <li>Collections</li>
+                    <li>{{ product.collections[1].title | capitalize }}</li>
+                </ul>
+                <div class="product_heading">
+                    <h1>{{ product.title }}</h1>
+                    <span></span>
+                </div>
+                <div class="product_description">
+                    <p>{{ product.metafields.my_fields.details }}</p>
+                </div>
+<!--                 <div class="straw_select_cont">
+                    <a href="#">Paper Straws</a>
+                    <a href="#">No Straws</a>
+                </div> -->
+                <div class="product_price_cont">
+                    <h4>
+                        {{ product.selected_or_first_available_variant.price | money }}
+                    </h4>
+                </div>
+                <div class="product_counter_cart_cont">
+                    <form>
+                        <div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value"><i
+                                class="fa-sharp fa-solid fa-minus"></i></div>
+                        <input type="number" id="number" value="1" />
+                        <div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value"><i
+                                class="fa-sharp fa-solid fa-plus"></i></div>
+                        <a href="#" class="add-to-cart" onclick="addToCart({{ product.selected_or_first_available_variant.id }})" data-id="{{ product.selected_or_first_available_variant.id }}">Add to cart</a>
+                    </form>
+                </div>
+            </div>
+            <div class="product_other_flavours">
+              {% assign items = 0 %}
+              {% for col_product in collections.sugar-free.products %}
+                {% unless product.id == col_product.id or items > 2 %}
+                <div class="product_img2_cont">
+                    <img src="{{ col_product.featured_image | img_url: '181x187' }}" alt="product_img_2">
+                </div>
+                 {% assign items = items | plus:1 %}
+                {% endunless %}
+              {% endfor %}
+                <span class="other_product_description">
+                    Other flavours to discover
+                </span>
+            </div>
+        </div>
+    </section>
+    <!-- features_section_2  -->
+    <section id="section_2">
+        <div class="s2_feature_cont autoplay1">
+          <div>
+                <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/s2_features_img1.png" alt="s2_img1">
+            </div>
+            <div>
+                <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/s2_features_img2.png" alt="s2_img1">
+            </div>
+            <div>
+                <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/s2_features_img3.png" alt="s2_img1">
+            </div>
+            <div>
+                <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/s2_features_img1.png" alt="s2_img1">
+            </div>
+            <div>
+                <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/s2_features_img2.png" alt="s2_img1">
+            </div>
+            <div>
+                <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/s2_features_img3.png" alt="s2_img1">
+            </div>
+      
+
+        </div>
+    </section>
+    <!-- ingredents_section_3  -->
+    <section id="section_3">
+        <div class="s3_ingredents_cont">
+            <div class="s3_heading_cont">
+                <h2>Ingredients & Nutritional Information</h2>
+            </div>
+            <div>
+                <div class="container">
+
+                    {{ product.metafields.product.nutritionalinfo }}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section_4  -->
+    <section id="section_4">
+        <div class="bubble_tea">
+            <div class="container_left">
+                <div class="detail_text">
+                    <p class="text1">{{ section.settings.text1 }}</p>
+                </div>
+                <div class="link_detail">
+                    <p class="text2">{{ section.settings.text2 }}</p>
+                </div>
+            </div>
+            <div class="container_right">
+                <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/1_fc4a75aa-44ef-4034-b47d-6a8868caef6f.png?v=1685166387" alt="mango-image">
+            </div>
+        </div>
+    </section>
+    <!-- delicious_flavours_section_5 -->
+<!--     <section id="section_5">
+        <section class="main-continer">
+            <div class="content-container">
+                <div class="left-content">
+                    <img src="{{ section.settings.image1 | img_url:'master' }}" alt="">
+                    <div class="left-txt">
+                        <p>{{ section.settings.text4 }} 
+                        </p>
+                    </div>
+                </div>
+                <div class="right-content">
+                    <h1>{{ section.settings.text3 }}</h1>
+                    <p>{{ section.settings.text5 }}  </p>
+                    <div class="right-side-img">
+                       <video src="{{ section.settings.video_url }}" controls />
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mobile-container">
+            <div class="content-container">
+                <h1>{{ section.settings.text3 }}</h1>
+                <div class="right-img">
+                    <img src="{{ section.settings.image1 | img_url:'master' }}" alt="">
+                </div>
+                <p>{{ section.settings.text4 }} </p>
+                <div class="right-side-img">
+                    <video src="{{ section.settings.video_url }}" controls />
+                    <p>{{ section.settings.text5 }} </p>
+                </div>
+            </div>
+        </section>
+    </section> -->
+    <!-- suger_free_section_6 -->
+    <section id="section_6">
+        <div class="s6_heading_cont">
+            <h2>
+                Try all the <span>Sugar-free</span> Flavours
+            </h2>
+        </div>
+        <div class="syrup_cont">
+        {% assign items = 0 %}
+          {% for col_pro in collections.sugar-free.products %}
+            {% if items < 3 and col_pro.id != product.id %}
+            <div class="syrup_product1">
+                <div class="autoplay3">
+                  {% for image in col_pro.images %}
+                        <img src="{{ image.src | img_url:'master' }}" alt="product_main_img" width="100%">
+                  {% endfor %}
+                </div>
+                <div>
+                    <h3>{{ col_pro.title }}</h3>
+                    <a href="{{ col_pro.url }}">Buy now</a>
+                </div>
+                <div>
+                    <p>{{ col_pro.metafields.my_fields.details }}</p>
+                </div>
+            </div>
+            {% assign items = items | plus:1 %}
+            {% endif %}
+          
+          {% endfor %}
+        </div>
+    </section>
+</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.autoplay').slick({
+                dots: true,
+                speed: 1000,
+                slidesToShow: 1,
+                centerPadding: "0px",
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 4000,
+                arrows: false,
+                responsive: [
+                    {
+                        breakpoint: 720,
+                        settings: {
+                            dots: true
+                        }
+                    }]
+                });
+            $('.autoplay1').slick({
+                dots: false,
+                infinite: true,
+                speed: 1000,
+                slidesToShow: 5,
+                centerPadding: "0px",
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                arrows: false
+            });
+
+            $('.autoplay3').slick({
+                dots: true,
+                infinite: true,
+                speed: 1000,
+                autoplaySpeed: 2000,
+                slidesToShow: 1,
+                centerPadding: "0px",
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                arrows: false
+            });
+        });
+    </script>
+    <script>      
+        function addToCart(id){
+          let formData = {
+           'items': [{
+            'id': id,
+            'quantity': document.getElementById('number').value
+            }]
+          };
+          fetch(window.Shopify.routes.root + 'cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+          })
+          .then(response => {
+            return response.json();
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+        }
+        function increaseValue() {
+            var value = parseInt(document.getElementById('number').value, 10);
+            value = isNaN(value) ? 0 : value;
+            value++;
+            document.getElementById('number').value = value;
+        }
+
+        function decreaseValue() {
+            var value = parseInt(document.getElementById('number').value, 10);
+            value = isNaN(value) ? 0 : value;
+            value < 1 ? value = 1 : '';
+            value--;
+            if(value == 0){
+              value = 1
+            }
+            document.getElementById('number').value = value;
+        }
+
+        const accordionBtns = document.querySelectorAll(".accordion");
+
+        accordionBtns.forEach((accordion) => {
+            accordion.onclick = function () {
+                this.classList.toggle("is-open");
+
+                let content = this.nextElementSibling;
+                console.log(content);
+
+                if (content.style.maxHeight) {
+                    //this is if the accordion is open
+                    content.style.maxHeight = null;
+                } else {
+                    //if the accordion is currently closed
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    console.log(content.style.maxHeight);
+                }
+            };
+        });
+    </script>
+{% schema %}
+  {
+    "name": "Suger free",
+    "settings": [
+      {
+        "type": "text",
+        "id": "bg_color",
+        "label": "Background Color",
+        "default":"#EF7E09"
+      },
+      {
+        "type": "text",
+        "id": "text1",
+        "label": "Section 2 text",
+        "default":"Indulge yourself with bubble tea"
+      },
+      {
+        "type": "text",
+        "id": "text2",
+        "label": "Section 2 text 2",
+        "default":"I love relaxing with bubble tea"
+      },
+      {
+        "type": "text",
+        "id": "text3",
+        "label": "Section 3 Heading",
+        "default":"Delicious Flavour <span class='organge'> without the Sugar</span>"
+      },
+      {
+       "type": "image_picker",
+       "id": "image1",
+       "label": "Image"
+      },
+      {
+        "type": "textarea",
+        "id": "text4",
+        "label": "Section 3 text 1",
+        "default":"lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      },
+      {
+        "type": "textarea",
+        "id": "video_url",
+        "label": "Section 3 video url",
+        "default":"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+      },
+      {
+        "type": "textarea",
+        "id": "text5",
+        "label": "Section 3 text 2",
+        "default":"lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

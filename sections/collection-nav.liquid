@@ -1,0 +1,121 @@
+                    {% if template contains 'collection' %}
+                      <style>
+                        /* Feature collection headers in nav css */
+  .collection-nav-container{
+    width: max-content;
+    margin: auto;
+    overflow-x: scroll;
+    display: flex;
+    position: static;
+    justify-content: flex-start;
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+    float: none;
+    max-width: 100%;
+    padding: 1rem 0;
+  }
+  .collection-nav-item{
+    flex: 0 0 auto;
+  }
+  .collection-nav-wrapper {
+    overflow: hidden;
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+    border-bottom:1px solid #d6d6d6;
+    background-color: rgb(var(--color-background));
+  }
+  .current-collection{
+    border-bottom: 2px solid #ccbedd;
+    font-weight: 800;
+  }
+  .current-collection .collection-nav-link{
+    opacity: 1;
+  }
+  .collection-nav-link{
+    text-decoration: none;
+    color: #050400;
+    opacity:0.7;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  .collection-nav-link:hover{
+    color: #050400;
+    opacity:1;
+  }
+                      </style>
+<div class="collection-nav-wrapper page-width">
+<div class="collection-nav-container">
+  <div class="collection-nav-item"><a class="collection-nav-link" href="/collections/all">All Products</a></div>
+  <div class="collection-nav-item"><a class="collection-nav-link" href="/collections/best-sellers">Best Sellers</a></div>
+  <div class="collection-nav-item"><a class="collection-nav-link" href="/collections/milk-tea">Milk Tea</a></div>
+  <div class="collection-nav-item"><a class="collection-nav-link" href="/collections/fruit-tea">Fruit Tea</a></div>
+  <div class="collection-nav-item"><a class="collection-nav-link" href="/collections/toppings">Toppings</a></div>
+  <div class="collection-nav-item"><a class="collection-nav-link" href="/collections/bbt-accesories">Accessories</a></div>
+  <div class="collection-nav-item"><a class="collection-nav-link" href="/collections/latest-releases">Latest Releases</a></div>
+  <div class="collection-nav-item"><a class="collection-nav-link" href="/collections/bundles">Bundles</a></div>
+  <div class="collection-nav-item"><a class="collection-nav-link" href="/collections/top-up-shop">Individual Items</a></div>
+</div>
+</div>
+
+<script>
+  let collectionName = "{{collection.title}}";
+  let collectionNavLinksArray = document.querySelectorAll('.collection-nav-link')
+    collectionNavLinksArray.forEach((element) => {
+    let navTitle = element.innerText;
+    if (navTitle == collectionName){
+      element.parentNode.classList.add("current-collection");
+
+    element.scrollIntoView({
+      block: "start",
+      behavior: "smooth",
+    });
+    }
+      if(navTitle == "Bundles"){
+      if (collectionName == "Starter Kits"){
+      element.parentNode.classList.add("current-collection");
+
+        element.scrollIntoView({
+      block: "start",
+      behavior: "smooth",
+    });
+        }
+    }
+        if(navTitle == "Accessories"){
+      if (collectionName == "BBT Accessories"){
+      element.parentNode.classList.add("current-collection");
+
+        element.scrollIntoView({
+      block: "start",
+      behavior: "smooth",
+    });
+        }
+    }
+        if(navTitle == "Toppings"){
+      if (collectionName == "BUBBLE TEA TOPPINGS" || collectionName == "Jelly" || collectionName == "POPPING PEARLS" ){
+      element.parentNode.classList.add("current-collection");
+        element.scrollIntoView({
+      block: "start",
+      behavior: "smooth",
+    });
+        }
+    }
+      if(navTitle == "Individual Items"){
+      if (collectionName == "BUBBLE TEA SYRUPS" || collectionName == "BUBBLE TEA POWDERS" || collectionName == "OTHERS" ){
+      element.parentNode.classList.add("current-collection");
+        element.scrollIntoView({
+      block: "start",
+      behavior: "smooth",
+    });
+        }
+    }
+  })
+</script>
+                        {% endif %}
+{% schema %}
+  {
+    "name": "collection-nav",
+    "class": "section",
+    "settings": []
+  }
+{% endschema %}
+

@@ -1,0 +1,851 @@
+{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
+{{ 'main-recipes.css' | asset_url | stylesheet_tag }}
+
+
+
+<div class="main-recipe-section-container">
+
+
+  <div class="title-container">
+    <h1 class="title--primary">{{ blog.title | escape }}</h1>
+  </div>
+  <div class="main-recipe-banner-container">
+
+    <div class="search_section">
+      <input  id="search_recipes" type="text" placeholder="What are you looking for first?">
+    </div>
+
+  </div>
+
+  <div class="category-select-section">
+<!--
+    <button id="category-christmas" class="category-select-container" >
+       <div class="category-select-card">
+
+        <div class="category-select-img-container">
+          <img class="category-select-img" 
+            src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/2_2ca17b38-d8e9-4a60-8dfa-228201f9b615.png?v=1644216996"
+            sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"          
+            alt="{{ article.image.src.alt | escape }}"
+            width="{{ article.image.width }}"
+            height="{{ article.image.height }}"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="category-select-info-container">
+          <h3>Christmas</h3>
+        </div>
+
+      </div>
+    </button>       
+-->
+    <button id="category-milk-tea" class="category-select-container" >
+       <div class="category-select-card">
+
+        <div class="category-select-img-container">
+          <img class="category-select-img" 
+            src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/Untitled_design_5_59b2573b-d90b-4490-a8aa-f8a45dbf19d2.gif?v=1658799457"
+            sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"          
+            alt="{{ article.image.src.alt | escape }}"
+            width="{{ article.image.width }}"
+            height="{{ article.image.height }}"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="category-select-info-container">
+          <h3>Milk Tea</h3>
+        </div>
+
+      </div>
+    </button>     
+
+    <button id="category-fruit-tea" class="category-select-container" >
+       <div class="category-select-card">
+
+        <div class="category-select-img-container">
+          <img class="category-select-img" 
+            src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/Recipe_Collection.gif?v=1652333249"
+            sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"          
+            alt="{{ article.image.src.alt | escape }}"
+            width="{{ article.image.width }}"
+            height="{{ article.image.height }}"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="category-select-info-container">
+          <h3>Fruit Tea</h3>
+        </div>
+
+      </div>
+    </button>     
+
+    <button id="category-brown-sugar" class="category-select-container" >
+       <div class="category-select-card">
+
+        <div class="category-select-img-container">
+          <img class="category-select-img" 
+            src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/Untitled_design_1.gif?v=1652330215"
+            sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"          
+            alt="{{ article.image.src.alt | escape }}"
+            width="{{ article.image.width }}"
+            height="{{ article.image.height }}"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="category-select-info-container">
+          <h3>Brown Sugar</h3>
+        </div>
+
+      </div>
+    </button>     
+
+    <button id="category-pearls" class="category-select-container" >
+       <div class="category-select-card">
+
+        <div class="category-select-img-container">
+          <img class="category-select-img" 
+            src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/Untitled_design_5b4a6564-8b8b-469d-a850-85cf4ccf978e.gif?v=1652329221"
+            sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"          
+            alt="{{ article.image.src.alt | escape }}"
+            width="{{ article.image.width }}"
+            height="{{ article.image.height }}"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="category-select-info-container">
+          <h3>Tapioca Pearls</h3>
+        </div>
+
+      </div>
+    </button>            
+                  
+                
+  </div>
+
+  <style>
+    /*As I can't find the class in the three css file listed at the top of this file, so I overwrite the two classes here.*/
+    .main-recipe-top-ten-grid-card-info { 
+      position: relative;
+    }
+
+    /*This css will make the purple badge always on both the right and bottom sides inside the div.*/
+    .main-recipe-top-ten-grid-card-tag-container{
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      margin-right: 2%;
+      margin-bottom: 2%;
+      padding-left: 8%;
+      padding-right: 8%;
+    }
+
+    /*When the screen size is smaller than 1900px, the page will use this css. This setting is used for responsive design.*/
+    @media screen and (max-width:1900px) {
+      .main-recipe-top-ten-grid-card-tag-container{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin-right: 2%;
+        margin-bottom: 2%;
+        padding-left: 3%;
+        padding-right: 3%;
+      }
+    }
+  </style>
+
+  <div class="main-recipe-top-ten-container">
+
+    <div class="main-recipe-top-ten-title-container">
+      <h2>Our Top Ten</h2>
+    </div>
+
+    <div class="main-recipe-top-ten-grid">
+
+      {%- if section.settings.img_url1 != blank -%}
+    		<a href="https://bubbleteaclub.com.au/blogs/recipes/mango-fruit-tea-recipe" class="main-recipe-top-ten-url">
+    	{%- endif -%}
+
+        <div class="main-recipe-top-ten-grid-container">
+
+          <div class="main-recipe-top-ten-grid-card">
+            <div class="main-recipe-top-ten-grid-img-container">
+              <img class="main-recipe-top-ten-grid-img" src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/5_bb978309-9152-4561-8aeb-dd0c672775d7.png?v=1658796470" alt="Girl in a jacket" width="250" height="200">
+            </div>
+
+
+            <div class="main-recipe-top-ten-grid-card-info">
+
+
+              <h3>How to make Mango Fruit Tea</h3>
+
+              <h4>5 Mins</h4>
+
+              <div class="main-recipe-top-ten-grid-card-tag-container">
+                <h5>Fruit Tea</h5>
+              </div>
+
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </a>
+
+      {%- if section.settings.img_url2 != blank -%}
+    		<a href="https://bubbleteaclub.com.au/blogs/recipes/thai-milk-tea" class="main-recipe-top-ten-url">
+    	{%- endif -%}
+
+        <div class="main-recipe-top-ten-grid-container">
+
+          <div class="main-recipe-top-ten-grid-card">
+            <div class="main-recipe-top-ten-grid-img-container">
+              <img class="main-recipe-top-ten-grid-img" src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/3_a399d8ec-a298-47ac-8b27-89a14ab247de.png?v=1658796470" alt="Girl in a jacket" width="250" height="200">
+            </div>
+
+
+            <div class="main-recipe-top-ten-grid-card-info">
+
+
+              <h3>How to make Thai Milk Tea</h3>
+
+              <h4>5 Mins</h4>
+
+              <div class="main-recipe-top-ten-grid-card-tag-container">
+                <h5>Milk Tea</h5>
+              </div>
+
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </a>
+
+      {%- if section.settings.img_url3 != blank -%}
+    		<a href="https://bubbleteaclub.com.au/blogs/recipes/original-milk-tea-recipe" class="main-recipe-top-ten-url">
+    	{%- endif -%}
+        <div class="main-recipe-top-ten-grid-container">
+
+          <div class="main-recipe-top-ten-grid-card">
+            <div class="main-recipe-top-ten-grid-img-container">
+              <img class="main-recipe-top-ten-grid-img" src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/1_4a5382ec-08a9-4fb0-b1a9-2941f8607a6f.png?v=1658796470" alt="Girl in a jacket" width="250" height="200">
+            </div>
+
+
+            <div class="main-recipe-top-ten-grid-card-info">
+
+
+              <h3>How to make Original Milk Tea</h3>
+
+              <h4>5 Mins</h4>
+
+              <div class="main-recipe-top-ten-grid-card-tag-container">
+                <h5>Milk Tea</h5>
+              </div>
+
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </a>
+
+      {%- if section.settings.img_url4 != blank -%}
+    		<a href="https://bubbleteaclub.com.au/blogs/recipes/brown-sugar-milk-tea-recipe" class="main-recipe-top-ten-url">
+    	{%- endif -%}        
+        <div class="main-recipe-top-ten-grid-container">
+
+          <div class="main-recipe-top-ten-grid-card">
+            <div class="main-recipe-top-ten-grid-img-container">
+              <img class="main-recipe-top-ten-grid-img" src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/4_beb6e523-9036-42b8-9e36-28dac6035fc1.png?v=1658796470" alt="Girl in a jacket" width="250" height="200">
+            </div>
+
+
+            <div class="main-recipe-top-ten-grid-card-info">
+
+
+              <h3>How to make Brown Sugar Milk Tea</h3>
+
+              <h4>5 Mins</h4>
+
+              <div class="main-recipe-top-ten-grid-card-tag-container">
+                <h5>Pearls</h5>
+              </div>
+
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </a>
+
+      {%- if section.settings.img_url5 != blank -%}
+    		<a href="https://bubbleteaclub.com.au/blogs/recipes/taro-milk-tea-recipe" class="main-recipe-top-ten-url">
+    	{%- endif -%}
+        
+        <div class="main-recipe-top-ten-grid-container">
+
+          <div class="main-recipe-top-ten-grid-card">
+            <div class="main-recipe-top-ten-grid-img-container">
+              <img class="main-recipe-top-ten-grid-img" src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/2_6faf4d8f-6792-45a5-85f2-2ce1c28f327d.png?v=1658796470" alt="Girl in a jacket" width="250" height="200">
+            </div>
+
+
+            <div class="main-recipe-top-ten-grid-card-info">
+
+
+              <h3>How to make Taro Milk Tea</h3>
+
+              <h4>5 Mins</h4>
+
+              <div class="main-recipe-top-ten-grid-card-tag-container">
+                <h5>Milk Tea</h5>
+              </div>
+
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </a>
+
+      {%- if section.settings.img_url6 != blank -%}
+    		<a href="https://bubbleteaclub.com.au/blogs/recipes/how-to-make-strawberry-fruit-tea" class="main-recipe-top-ten-url">
+    	{%- endif -%}
+
+        <div class="main-recipe-top-ten-grid-container">
+
+          <div class="main-recipe-top-ten-grid-card">
+            <div class="main-recipe-top-ten-grid-img-container">
+              <img class="main-recipe-top-ten-grid-img" src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/8_81280b66-f228-4ac1-a589-2ee7186f8f4b.png?v=1658796470" alt="Girl in a jacket" width="250" height="200">
+            </div>
+
+
+            <div class="main-recipe-top-ten-grid-card-info">
+
+
+              <h3>How to make Strawberries Fruit Tea</h3>
+
+              <h4>5 Mins</h4>
+
+              <div class="main-recipe-top-ten-grid-card-tag-container">
+                <h5>Milk Tea</h5>
+              </div>
+
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </a>
+
+      {%- if section.settings.img_url7 != blank -%}
+    		<a href="https://bubbleteaclub.com.au/blogs/recipes/how-to-make-guava-green-tea-with-white-pearls" class="main-recipe-top-ten-url">
+    	{%- endif -%}
+
+        <div class="main-recipe-top-ten-grid-container">
+
+          <div class="main-recipe-top-ten-grid-card">
+            <div class="main-recipe-top-ten-grid-img-container">
+              <img class="main-recipe-top-ten-grid-img" src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/9.png?v=1658796470" alt="Girl in a jacket" width="250" height="200">
+            </div>
+
+
+            <div class="main-recipe-top-ten-grid-card-info">
+
+
+              <h3>How to make Guava Green Tea</h3>
+
+              <h4>5 Mins</h4>
+
+              <div class="main-recipe-top-ten-grid-card-tag-container">
+                <h5>Fruit Tea</h5>
+              </div>
+
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </a>
+
+      {%- if section.settings.img_url8 != blank -%}
+    		<a href="https://bubbleteaclub.com.au/blogs/recipes/matcha-brown-sugar-milk-tea-recipe" class="main-recipe-top-ten-url">
+    	{%- endif -%}
+
+        <div class="main-recipe-top-ten-grid-container">
+
+          <div class="main-recipe-top-ten-grid-card">
+            <div class="main-recipe-top-ten-grid-img-container">
+              <img class="main-recipe-top-ten-grid-img" src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/6_ad1c3c0e-f714-41ac-9048-44ada3cb22c0.png?v=1658796470" alt="Girl in a jacket" width="250" height="200">
+            </div>
+
+
+            <div class="main-recipe-top-ten-grid-card-info">
+
+
+              <h3>How to make Brown Sugar Matcha Milk Tea</h3>
+
+              <h4>5 Mins</h4>
+
+              <div class="main-recipe-top-ten-grid-card-tag-container">
+                <h5>Matcha Recipe</h5>
+              </div>
+
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </a>
+
+      {%- if section.settings.img_url9 != blank -%}
+    		<a href="https://bubbleteaclub.com.au/blogs/recipes/green-apple-fruit-tea-recipe" class="main-recipe-top-ten-url">
+    	{%- endif -%}
+        
+        <div class="main-recipe-top-ten-grid-container">
+
+          <div class="main-recipe-top-ten-grid-card">
+            <div class="main-recipe-top-ten-grid-img-container">
+              <img class="main-recipe-top-ten-grid-img" src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/7_d52d293d-3a58-463f-9008-b4d3dc43dacc.png?v=1658796470" alt="Girl in a jacket" width="250" height="200">
+            </div>
+
+
+            <div class="main-recipe-top-ten-grid-card-info">
+
+
+              <h3>How to make Green Apple Fruit Tea</h3>
+
+              <h4>5 Mins</h4>
+
+              <div class="main-recipe-top-ten-grid-card-tag-container">
+                <h5>Fruit Tea</h5>
+              </div>
+
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </a>
+
+      {%- if section.settings.img_url10 != blank -%}
+    		<a href="https://bubbleteaclub.com.au/blogs/recipes/yoghurt-green-tea-recipe" class="main-recipe-top-ten-url">
+    	{%- endif -%}
+        
+        <div class="main-recipe-top-ten-grid-container">
+
+          <div class="main-recipe-top-ten-grid-card">
+            <div class="main-recipe-top-ten-grid-img-container">
+              <img class="main-recipe-top-ten-grid-img" src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/10.png?v=1658796470" alt="Girl in a jacket" width="250" height="200">
+            </div>
+
+
+            <div class="main-recipe-top-ten-grid-card-info">
+
+
+              <h3>How to make Yoghurt Green Tea</h3>
+
+              <h4>5 Mins</h4>
+
+              <div class="main-recipe-top-ten-grid-card-tag-container">
+                <h5>Fruit Tea</h5>
+              </div>
+
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </a>
+
+    </div>
+
+  </div>
+
+    {% assign sec_names = section.settings.section_name | split: ","  %}
+        {% for name in sec_names %}
+        {% assign data_name = name %}
+
+        <div class="main-recipe-container-{{data_name}}" style="display:none;">
+
+          <div class="main-recipe-title-container">
+            <h2>{{data_name}}</h2>
+          </div>
+
+          <div class="main-recipe-grid">
+
+            
+          {% for article in blog.articles %}
+            {% for tag in article.tags %}
+              {% if tag contains data_name %}
+
+                <a href="{{ article.url }}">
+                  <div class="main-recipe-grid-container">
+
+                    <div class="main-recipe-grid-card">
+
+                      <div class="main-recipe-grid-img-container">
+                        <img class="main-recipe-grid-img" 
+                        src="{{ article.image.src | img_url: '533x' }}"
+                        sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                        
+                        alt="{{ article.image.src.alt | escape }}"
+                        width="{{ article.image.width }}"
+                        height="{{ article.image.height }}"
+                        loading="lazy"
+                        >
+                      </div>
+
+                      <div class="main-recipe-grid-info-container">
+                        <h3>{{ article.title }}</h3>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </a>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+
+
+          </div>
+
+        </div>
+
+
+    {% endfor %}
+
+</div>
+
+
+
+<script>
+  
+  let categorySelected = " ";
+
+  document.addEventListener("DOMContentLoaded", function(event) { 
+    document.querySelector('#search_recipes').addEventListener('keyup', function(event) {
+       if (document.querySelector('#search_recipes').value == '')
+        {
+         // document.querySelector('.main-recipe-container-Christmas').style.display = "none"; 
+          document.querySelector('.main-recipe-container-Milk.Tea').style.display = "none";  
+          document.querySelector('.main-recipe-container-Fruit.Tea').style.display = "none";  
+          document.querySelector('.main-recipe-container-Brown.Sugar').style.display = "none";   
+          document.querySelector('.main-recipe-container-Tapioca.Pearls').style.display = "none";
+
+          if (categorySelected == " ")
+          {
+            document.querySelector('.main-recipe-top-ten-container').style.display = "block";
+
+
+          }
+          else
+          {
+            document.querySelector(categorySelected).style.display = "block";
+          }
+          
+        }
+        else
+        {
+          document.querySelector('.main-recipe-top-ten-container').style.display = "none";
+
+          //document.querySelector('.main-recipe-container-Christmas').style.display = "block";
+          document.querySelector('.main-recipe-container-Milk.Tea').style.display = "block";  
+          document.querySelector('.main-recipe-container-Fruit.Tea').style.display = "block";  
+          document.querySelector('.main-recipe-container-Brown.Sugar').style.display = "block";   
+          document.querySelector('.main-recipe-container-Tapioca.Pearls').style.display = "block";
+          
+        }
+
+      const value = this.value.toLowerCase(); 
+      const blogList = document.querySelectorAll('.main-recipe-grid-container');
+
+      blogList.forEach((item) => {
+        const title = item.querySelector('.main-recipe-grid-container h3').textContent;
+        if (title.toLowerCase().indexOf(value) != -1) {
+          item.parentNode.style.display = 'block';
+        } else {
+          item.parentNode.style.display = 'none';
+        }
+      });
+
+      let collectionArray = document.querySelectorAll('.main-recipe-grid');
+
+      for (collectionItem of collectionArray)
+      {
+        let cardsArray = collectionItem.children;
+        let hasItem = false;
+        for (cardItem of cardsArray)
+        {
+          if (cardItem.style.display == "block")
+          {
+            hasItem = true;
+          }
+        }
+        if (hasItem == true)
+        {
+          collectionItem.parentNode.style.display = 'block';
+        }
+        else
+        {
+          collectionItem.parentNode.style.display = 'none';
+        }
+      }
+
+
+
+      if (event.key === "Enter") 
+      {
+        document.querySelector('.main-recipe-container-Tapioca.Pearls').scrollIntoView(true); 
+        document.querySelector('.main-recipe-container-Brown.Sugar').scrollIntoView(true);  
+        document.querySelector('.main-recipe-container-Fruit.Tea').scrollIntoView(true);    
+        document.querySelector('.main-recipe-container-Milk.Tea').scrollIntoView(true); 
+       // document.querySelector('.main-recipe-container-Christmas').scrollIntoView(true);  
+      }
+
+    });
+  });
+
+
+
+  function changeCategory(category, button)
+  {
+
+   // document.querySelector('.main-recipe-container-Christmas').style.display = "none";
+    document.querySelector('.main-recipe-container-Milk.Tea').style.display = "none";  
+    document.querySelector('.main-recipe-container-Fruit.Tea').style.display = "none";  
+    document.querySelector('.main-recipe-container-Brown.Sugar').style.display = "none";   
+    document.querySelector('.main-recipe-container-Tapioca.Pearls').style.display = "none";
+
+   // document.querySelector('button#category-christmas').style.transform = "scale(1.00)";
+    document.querySelector('button#category-milk-tea').style.transform = "scale(1.00)";
+    document.querySelector('button#category-fruit-tea').style.transform = "scale(1.00)";
+    document.querySelector('button#category-brown-sugar').style.transform = "scale(1.00)";
+    document.querySelector('button#category-pearls').style.transform = "scale(1.00)";
+
+   // document.querySelector('button#category-christmas').style.backgroundColor = "white"
+    document.querySelector('button#category-milk-tea').style.backgroundColor = "white"
+    document.querySelector('button#category-fruit-tea').style.backgroundColor = "white"
+    document.querySelector('button#category-brown-sugar').style.backgroundColor = "white"
+    document.querySelector('button#category-pearls').style.backgroundColor = "white"
+
+    if (category == " ")
+    {
+      categorySelected = category
+
+      document.querySelector('.main-recipe-banner-container').style.height = "auto";
+      document.querySelector('.main-recipe-banner-container').style.opacity = "1"; 
+    }
+    else
+    {
+      categorySelected = category; 
+
+      document.querySelector(category).style.display = "block";
+      document.querySelector(button).style.transform = "scale(1.05)";
+      document.querySelector(button).style.backgroundColor = "#CCBEDD";
+
+      document.querySelector('.main-recipe-banner-container').style.height = "0";
+      document.querySelector('.main-recipe-banner-container').style.opacity = "0"; 
+      
+    }
+    checkCategorySelected();
+  }
+
+
+  function checkCategorySelected ()
+  {
+    if (categorySelected == " ")
+    {
+
+      document.querySelector('.main-recipe-top-ten-container').style.display = "block";
+    }
+    else
+    {
+      document.querySelector('.main-recipe-top-ten-container').style.display = "none";
+    }
+  }
+
+ /* document.querySelector('button#category-christmas').addEventListener('click', function() {
+    
+    if (document.querySelector('.main-recipe-container-Christmas').style.display == "block")
+    {
+      changeCategory(' ','button#category-christmas')
+    }
+    else if (document.querySelector('.main-recipe-container-Christmas').style.display == "none")
+    {
+      changeCategory('.main-recipe-container-Christmas','button#category-christmas')
+      document.querySelector('.main-recipe-container-Christmas').scrollIntoView(true);
+    }  
+
+  });*/
+
+  document.querySelector('button#category-milk-tea').addEventListener('click', function() {
+    
+    if (document.querySelector('.main-recipe-container-Milk.Tea').style.display == "block")
+    {  
+      
+      changeCategory(' ','button#category-milk-tea')
+    }
+    else if (document.querySelector('.main-recipe-container-Milk.Tea').style.display == "none")
+    {
+      
+      changeCategory('.main-recipe-container-Milk.Tea','button#category-milk-tea')
+      document.querySelector('.main-recipe-container-Milk.Tea').scrollIntoView(true);    
+    }
+
+    
+  });
+
+  document.querySelector('button#category-fruit-tea').addEventListener('click', function() {
+    
+    if (document.querySelector('.main-recipe-container-Fruit.Tea').style.display == "block")
+    { 
+      changeCategory(' ','button#category-fruit-tea')
+    }
+    else if (document.querySelector('.main-recipe-container-Fruit.Tea').style.display == "none")
+    {
+      changeCategory('.main-recipe-container-Fruit.Tea','button#category-fruit-tea')
+      document.querySelector('.main-recipe-container-Fruit.Tea').scrollIntoView(true);       
+    }
+    
+  });
+
+  document.querySelector('button#category-brown-sugar').addEventListener('click', function() {
+    
+    if (document.querySelector('.main-recipe-container-Brown.Sugar').style.display == "block")
+    {  
+      changeCategory(' ','button#category-brown-sugar') 
+    }
+    else if (document.querySelector('.main-recipe-container-Brown.Sugar').style.display == "none")
+    {
+      changeCategory('.main-recipe-container-Brown.Sugar','button#category-brown-sugar')
+      document.querySelector('.main-recipe-container-Brown.Sugar').scrollIntoView(true);    
+    }
+
+  });
+
+  document.querySelector('button#category-pearls').addEventListener('click', function() {
+    
+    if (document.querySelector('.main-recipe-container-Tapioca.Pearls').style.display == "block")
+    {
+      changeCategory(' ','button#category-pearls')
+    }
+    else if (document.querySelector('.main-recipe-container-Tapioca.Pearls').style.display == "none")
+    {
+      changeCategory('.main-recipe-container-Tapioca.Pearls','button#category-pearls')
+      document.querySelector('.main-recipe-container-Tapioca.Pearls').scrollIntoView(true); 
+    }
+
+  });
+
+  
+</script>
+
+
+
+  
+
+
+{% schema %}
+{
+    "name": "t:sections.main-recipe-collection.name",
+     "tag":"section",
+    "settings": [
+        {
+          "type": "text",
+          "id": "section_name",
+          "label": "Enter comma separated section names"
+        },
+        {
+          "type": "url",
+          "id": "img_url1",
+          "label": "Image url1"
+        },
+        {
+          "type": "url",
+          "id": "img_url2",
+          "label": "Image url2"
+        },
+        {
+          "type": "url",
+          "id": "img_url3",
+          "label": "Image url3"
+        },
+        {
+          "type": "url",
+          "id": "img_url4",
+          "label": "Image url4"
+        },
+        {
+          "type": "url",
+          "id": "img_url5",
+          "label": "Image url5"
+        },
+        {
+          "type": "url",
+          "id": "img_url6",
+          "label": "Image url6"
+        },
+        {
+          "type": "url",
+          "id": "img_url7",
+          "label": "Image url7"
+        },
+        {
+          "type": "url",
+          "id": "img_url8",
+          "label": "Image url8"
+        },
+        {
+          "type": "url",
+          "id": "img_url9",
+          "label": "Image url9"
+        },
+        {
+          "type": "url",
+          "id": "img_url10",
+          "label": "Image url10"
+        }
+        
+    ]
+}
+{% endschema %}
