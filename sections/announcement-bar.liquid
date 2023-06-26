@@ -1,0 +1,280 @@
+{%- for block in section.blocks -%}
+  {%- case block.type -%}
+    {%- when 'announcement' -%}
+    <!--Has some legging if I use this asset_url-->
+      <svg class="waves_banner" width="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <path id="banner_wave" d="" fill="#CCBEDD"/>
+      </svg>
+
+      <script>
+        (function() {
+          let container = document.body;
+          let width = container.offsetWidth;
+          let height = container.offsetHeight;
+          let wave = document.getElementById('banner_wave');
+      
+          let waveWidth = container.offsetWidth;  // Wave SVG width (usually container width)    
+          let waveHeight = 1;                   // Position from the top of container
+          var waveDelta = 10;                     // Wave amplitude
+          var speed = 0.2;                        // Wave animation speed
+          var wavePoints = 6;                     // How many point will be used to compute our wave
+      
+          var points = [];
+
+          function setNewWindowSize() {
+            container = document.body;
+            width = container.offsetWidth;
+            height = container.offsetHeight;
+            waveWidth = container.offsetWidth;
+          }
+      
+          function calculateWavePoints(factor) {
+            var points = [];
+      
+            for (var i = 0; i <= wavePoints; i++) {
+              let x = i / wavePoints * waveWidth;
+              let sinSeed = (factor + (i + i % wavePoints)) * speed * 100;
+              let sinHeight = Math.sin(sinSeed / 100) * waveDelta;
+              let yPos = Math.sin(sinSeed / 100) * sinHeight + waveHeight;
+              points.push({ x: x, y: yPos });
+            }
+      
+            return points;
+          }
+      
+          function buildPath(points) {
+            let SVGString = 'M ' + points[0].x + ' ' + points[0].y;
+      
+            let cp0 = {
+              x: (points[1].x - points[0].x) / 2,
+              y: (points[1].y - points[0].y) + points[0].y + (points[1].y - points[0].y)
+            };
+      
+            SVGString += ' C ' + cp0.x + ' ' + cp0.y + ' ' + cp0.x + ' ' + cp0.y + ' ' + points[1].x + ' ' + points[1].y;
+      
+            let prevCp = cp0;
+            let inverted = -1;
+      
+            for (var i = 1; i < points.length - 1; i++) {
+              let cpLength = Math.sqrt(prevCp.x * prevCp.x + prevCp.y * prevCp.y);
+              let cp1 = {
+                x: (points[i].x - prevCp.x) + points[i].x,
+                y: (points[i].y - prevCp.y) + points[i].y
+              };
+      
+              SVGString += ' C ' + cp1.x + ' ' + cp1.y + ' ' + cp1.x + ' ' + cp1.y + ' ' + points[i + 1].x + ' ' + points[i + 1].y;
+              prevCp = cp1;
+              inverted = -inverted;
+            };
+      
+            SVGString += ' L ' + width + ' ' + height;
+            SVGString += ' L 0 ' + height + ' Z';
+            return SVGString;
+          }
+      
+          var lastUpdate;
+          var totalTime = 0;
+      
+          function tick() {
+            var now = window.Date.now();
+      
+            if (lastUpdate) {
+              let elapsed = (now - lastUpdate) / 1000;
+              lastUpdate = now;
+      
+              totalTime += elapsed;
+      
+              let factor = totalTime * Math.PI;
+              wave.setAttribute('d', buildPath(calculateWavePoints(factor)));
+            } else {
+              lastUpdate = now;
+            }
+      
+            window.requestAnimationFrame(tick);
+          };
+          tick();
+          window.addEventListener('DOMContentLoaded', setNewWindowSize);
+          window.addEventListener('resize', setNewWindowSize);
+        })();
+
+      </script>
+      
+      <div class="announcement-bar color-{{ block.settings.color_scheme }} gradient" role="region" aria-label="{{ 'sections.header.announcement' | t }}" {{ block.shopify_attributes }}>
+          {%- if block.settings.text != blank -%}
+          {%- if block.settings.link != blank -%}
+            <a href="{{ block.settings.link }}" class="announcement-bar__link link link--text focus-inset animate-arrow">
+          {%- endif -%}
+              <div class="page-width">
+                <div class="announcement-bar__messages">                
+                <p class="announcement-bar__message  h5">
+                  {{ block.settings.text | escape }}
+                  {%- if block.settings.link != blank -%}
+                    {% render 'icon-arrow' %}
+                  {%- endif -%}
+                </p>
+
+                <p class="announcement-bar__message  h5">
+                  {{ block.settings.text | escape }}
+                  {%- if block.settings.link != blank -%}
+                    {% render 'icon-arrow' %}
+                  {%- endif -%}
+                </p>
+
+                <p class="announcement-bar__message  h5">
+                  {{ block.settings.text | escape }}
+                  {%- if block.settings.link != blank -%}
+                    {% render 'icon-arrow' %}
+                  {%- endif -%}
+                </p>
+
+                <p class="announcement-bar__message  h5">
+                  {{ block.settings.text | escape }}
+                  {%- if block.settings.link != blank -%}
+                    {% render 'icon-arrow' %}
+                  {%- endif -%}
+                </p>
+                
+                <p class="announcement-bar__message  h5">
+                  {{ block.settings.text | escape }}
+                  {%- if block.settings.link != blank -%}
+                    {% render 'icon-arrow' %}
+                  {%- endif -%}
+                </p>
+
+                <p class="announcement-bar__message  h5">
+                  {{ block.settings.text | escape }}
+                  {%- if block.settings.link != blank -%}
+                    {% render 'icon-arrow' %}
+                  {%- endif -%}
+                </p>
+
+                <p class="announcement-bar__message  h5">
+                  {{ block.settings.text | escape }}
+                  {%- if block.settings.link != blank -%}
+                    {% render 'icon-arrow' %}
+                  {%- endif -%}
+                </p>
+
+                <p class="announcement-bar__message  h5">
+                  {{ block.settings.text | escape }}
+                  {%- if block.settings.link != blank -%}
+                    {% render 'icon-arrow' %}
+                  {%- endif -%}
+                </p>
+
+                <p class="announcement-bar__message  h5">
+                  {{ block.settings.text | escape }}
+                  {%- if block.settings.link != blank -%}
+                    {% render 'icon-arrow' %}
+                  {%- endif -%}
+                </p>
+                
+                <p class="announcement-bar__message  h5">
+                  {{ block.settings.text | escape }}
+                  {%- if block.settings.link != blank -%}
+                    {% render 'icon-arrow' %}
+                  {%- endif -%}
+                </p>
+                </div>
+              </div>
+          {%- if block.settings.link != blank -%}
+            </a>
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+
+    <script>
+        var templateSlide = null;
+        var slideContainer = null;
+        for (var i = 0; i < 30; i++ ) {
+          templateSlide = document.querySelector('.announcement-bar__messages .announcement-bar__message.h5');
+          slideContainer = document.querySelector(".announcement-bar__messages");
+          let clonedSlide = templateSlide.cloneNode(true);
+          slideContainer.appendChild(clonedSlide);          
+        }
+      </script>
+
+      
+  {%- endcase -%}
+{%- endfor -%}
+
+{% schema %}
+{
+  "name": "t:sections.announcement-bar.name",
+  "max_blocks": 12,
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "t:sections.announcement-bar.blocks.announcement.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "default": "Welcome to our store",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "t:sections.announcement-bar.blocks.announcement.settings.text_alignment.options__1.label"
+            },
+            {
+              "value": "center",
+              "label": "t:sections.announcement-bar.blocks.announcement.settings.text_alignment.options__2.label"
+            },
+            {
+              "value": "right",
+              "label": "t:sections.announcement-bar.blocks.announcement.settings.text_alignment.options__3.label"
+            }
+          ],
+          "default": "center",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.text_alignment.label"
+        },
+        {
+          "type": "select",
+          "id": "color_scheme",
+          "options": [
+            {
+              "value": "accent-1",
+              "label": "t:sections.all.colors.accent_1.label"
+            },
+            {
+              "value": "accent-2",
+              "label": "t:sections.all.colors.accent_2.label"
+            },
+            {
+              "value": "background-1",
+              "label": "t:sections.all.colors.background_1.label"
+            },
+            {
+              "value": "background-2",
+              "label": "t:sections.all.colors.background_2.label"
+            },
+            {
+              "value": "inverse",
+              "label": "t:sections.all.colors.inverse.label"
+            }
+          ],
+          "default": "accent-1",
+          "label": "t:sections.all.colors.label"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.link.label"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "announcement"
+      }
+    ]
+  }
+}
+{% endschema %}

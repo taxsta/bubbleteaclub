@@ -1,0 +1,137 @@
+{% comment %}
+  This is new section to show detail information of products
+  1. create component-product-details.css to define css in this section
+  2. The javascript(from line 21 to 37) is for switching tables only in Product "Sugar-Free Peach Fruit Tea"
+{% endcomment %}
+{{ 'component-product-details.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .full_width {
+    margin: 0 20% 5rem 20%;
+    width: 100%;
+  }
+  .hide_part {
+    display: none;
+  }
+</style>
+                                              
+{% assign htmlContent = section.settings.nutrition_information %}
+
+
+<!-- Switch table to display when product have two tables this is only in product "Sugar-Free Peach Fruit Tea" -->
+<!--  All the classes in this javascript are in this product's metafield(Nutrition information temp)-->
+  <script>
+    function toggleTable() {
+        var table1 = document.querySelector(".nutritional-table-1");
+        var table2 = document.querySelector(".nutritional-table-2");
+
+        if (table1.classList.contains("hidden")) {
+            table1.classList.remove("hidden");
+            table2.classList.add("hidden");
+        } else {
+            table1.classList.add("hidden");
+            table2.classList.remove("hidden");
+        }
+    }
+    
+</script>
+
+
+
+<div class="product-details details color-inverse grid grid--1-col grid--2-col-tablet">
+    <div class="grid__item detail-grid-item {% if htmlContent == empty %} full_width {% endif %}">
+      <div class="h1">
+        {{ product.title  | escape }}
+      </div>
+      {{ section.settings.product_description }}
+    </div>
+    <div class="grid__item detail-grid-item {% if htmlContent == empty %} hide_part {% endif %}">
+      <div class="product__accordion accordion quick-add-hidden" style="margin-top: 0;">
+        <details open>
+          <summary>
+            <div class="h3">Nutritional & Ingredient information</div>
+            {% render 'icon-caret' %}
+          </summary>
+          <div class="accordion__content rte">
+            <div class="nutrition_info_table">{{ htmlContent }}</div>
+          </div>
+        </details>
+    </div>
+  </div>
+  
+  <!-- The first there icons only show on mobile page   -->
+  <!-- They will be hidden on desktop show   -->
+  <div class="mobile_detail_image_container_up">
+    <div class="image-item">
+      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/Good_Taste.svg?v=1687139227" alt="SVG Image" />
+      <p>GOOD TASTE</p>
+    </div>
+    <div class="image-item">
+      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/1.90_per_serve.svg?v=1687139227" alt="SVG Image" />
+      <p>$1.90 PER SERVE</p>
+    </div>
+    <div class="image-item">
+      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/Reusable_Accessories.svg?v=1687139227" alt="SVG Image" />
+      <p>REUSABLE ACCESSORIES</p>
+    </div>
+  </div>
+
+  <!-- The six icons only show on desktop page   -->
+  <!-- They will be hidden on mobile page -->
+  <div class="detail_image_container">
+    <div class="image-item">
+      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/Good_Taste.svg?v=1687139227" alt="SVG Image" />
+      <p>GOOD TASTE</p>
+    </div>
+    <div class="image-item">
+      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/1.90_per_serve.svg?v=1687139227" alt="SVG Image" />
+      <p>$1.90 PER SERVE</p>
+    </div>
+    <div class="image-item">
+      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/Reusable_Accessories.svg?v=1687139227" alt="SVG Image" />
+      <p>REUSABLE ACCESSORIES</p>
+    </div>
+    <div class="image-item">
+      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/Perfect_for_Gifting.svg?v=1687139227" alt="SVG Image" />
+      <p>PERFECT FOR GIFTS</p>
+    </div>
+    <div class="image-item">
+      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/Easy_to_make.svg?v=1687139227" alt="SVG Image" />
+      <p>EASY TO MAKE</p>
+    </div>
+    <div class="image-item">
+      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/Reusable_Packaging.svg?v=1687139227" alt="SVG Image" />
+      <p>REUSABLE PACKAGING</p>
+    </div>
+  </div>
+</div>
+             
+
+{% schema %}
+  {
+    "name": "Product Details",
+    "settings": [
+      {
+        "type": "text",
+        "id": "product-detail",
+        "label": "Product details"
+      },
+      {
+          "type": "richtext",
+          "id": "product_description",
+          "label": "Product Description"
+      },
+      {
+          "type": "richtext",
+          "id": "nutrition_information",
+          "label": "Product Nutrition Information"
+        }
+    ],
+    "presets": [
+      {
+        "name": "Product Details",
+        "category": "Added by shopifyShanti"
+      }
+    ]
+  }
+{% endschema %}

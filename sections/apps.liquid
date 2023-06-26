@@ -1,0 +1,56 @@
+{% comment %}
+  Only do an update on schema here
+  1. add a schema with id "background_color" to set the background of the whole app section
+  2. create javascript(from line 20 to line 24) to get app section div and set the background with new color
+{% endcomment %}
+<style>
+  .background {
+    background: {{ section.settings.background_color }};
+  }
+</style>
+
+
+<div class="{% if section.settings.include_margins %}page-width{% endif %} app_child">
+  {%- for block in section.blocks -%}
+    {% render block %}
+  {%- endfor -%}
+</div>
+
+
+<script>
+  var childElement = document.querySelector('.app_child');
+  var parentElement = childElement.parentNode;
+  parentElement.classList.add("background");
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.apps.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "include_margins",
+      "default": true,
+      "label": "t:sections.apps.settings.include_margins.label"
+    },
+    {
+      "type": "text",
+      "id": "background_color",
+      "default": "transparent",
+      "label": "Set app's background color here"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.apps.presets.name"
+    }
+  ]
+}
+{% endschema %}

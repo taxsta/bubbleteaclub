@@ -1,0 +1,35 @@
+{% comment %}
+  This is a new section containing a whole image to be shown right below product detial information section
+{% endcomment %}
+<div class="image_as_background">&nbsp;</div>
+
+{% schema %}
+  {
+    "name": "Image As Background",
+    "settings": [     
+      {
+        "type": "text",
+        "id": "background-url",
+        "label": "Background Image URL"
+      }    
+    ],
+    "presets": [
+      {
+        "name": "image as background",
+        "category": "Added by shopifyShanti"
+      }
+    ]
+  }
+{% endschema %}
+
+{% style %}
+  .image_as_background {
+    background: url({{ section.settings.background-url }});
+    height: 600px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin-top: -11%;
+    margin-bottom: -1%;
+  }
+{% endstyle %}

@@ -1,0 +1,52 @@
+/* Ailene CSS */
+#customcrypt_wrapper .contact__button {
+  margin-top: 4rem;
+}
+
+.header__icon .icon.new-icon {
+  fill: initial;
+}
+
+.with-icon {
+    display: flex;
+    align-items: center;
+}
+
+.with-icon::before {
+  width: 2.5rem;
+  height: 2.5rem;
+  content: "";
+  display: block;
+  position: absolute;
+  margin-left:15px;
+}
+details#Details-menu-drawer-menu-item-1 {
+    width: 100%;
+}
+.menu-drawer__menu-item__with_icon {
+    padding: 1.1rem 5.1rem !important;
+    text-decoration: none;
+    font-size: 1.8rem;
+    width:100%;
+}
+
+.icon-shop::before {
+  content: url({{ 'Shop.svg' | asset_url }});
+}
+
+.icon-recipes::before {
+  content: url({{ 'Recipes.svg' | asset_url }});
+}
+
+.icon-faqs::before {
+  content: url({{ 'FAQs.svg' | asset_url }});
+}
+.icon-sugar-free::before {
+  content: url({{ 'Gifts.svg' | asset_url }});
+}
+.icon-boba-plushies::before {
+  content: url({{ 'Panda Bobamon.svg' | asset_url }});
+}
+.icon-eofy-sales::before {
+  content: url({{ 'Pricetag icon.svg' | asset_url }});
+}

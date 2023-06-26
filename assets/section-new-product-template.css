@@ -1,0 +1,102 @@
+
+.feature-collection-slider-buttons.no-js-hidden {
+    position: absolute !important;
+    top: 30% !important;
+    width: 100% !important;
+  z-index: 99;
+  justify-content: space-between !important;
+}
+.product-feature-collection-slider .icon{
+  height: 0.8rem !important;
+  color: white;
+}
+
+.product-feature-collection-slider{
+  background-color: black !important;
+  border-radius: 100px;
+  padding: 3px;
+  transition: all 0.5s;
+}
+
+.product-feature-collection-slider[disabled]{
+    background-color: transparent !important;
+}
+
+.quick-add__submit{
+  background-color: #c4b3d7;
+  color: #050400;
+  border: 1px solid #c4b3d7;
+  margin-top: 1rem;
+}
+.quick-add__submit[disabled]{
+  background-color: grey;
+  color: black;
+  border: 1px solid #c4b3d7;
+  margin-top: 1rem;
+}
+.flavourSelected{
+  border:3px solid #c4b3d7;
+  border-radius:5px;
+}
+.flavourSelectedParent{
+  height: max-content;
+}
+.product-popup-modal__opener{
+  width:100%;
+}
+.topping_popup_btn{
+    width: 100%;
+    background-color: #B8d4b6;
+    border-radius: 10px;
+  transition: 0.5s all ease-in-out;
+  text-decoration: none;
+}
+.topping_popup_btn:hover{
+    background-color: black;
+  color: white;
+}
+.featuredCollectionGridView{
+  display:grid !important;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.featuredCollectionItemGridView{
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+}
+.product__text {
+    display: inline-block;
+}
+.featured-flavours-view-all.btn {
+  display: inline-block;
+  background-color: transparent;
+  border: none;
+  margin-left:53%;
+  color:#050400;
+  font-weight: bold;
+}
+.featured-flavours-view-all.btn:hover {
+  cursor:pointer;
+  text-decoration: underline;
+}
+@media screen and (min-width:750px){
+  .featured-flavours-view-all.btn {
+  margin-left:55%;
+}
+}
+@media screen and (min-width:1300px){
+  .featured-flavours-view-all.btn {
+  margin-left:59%;
+}
+}
+@media screen and (min-width:1600px;){
+  .featured-flavours-view-all.btn {
+  margin-left:63%;
+}
+}
+button.featured-flavours-view-all.btn {
+    font-size: 14px;
+}
+.grid-svg{
+  margin-left:5px;
+}
