@@ -1,4 +1,13 @@
-// Changelog
+// Changelog 27/06 Version update
+Features added:
+/*
+- Bug fix for recipe page where buttons in the top ten recipes overflows
+- Added a collection template page for the sugar free collection
+- Redesigned Product page for bubble tea products with the following changes:
+  - Added Step process for upsell of toppings and products
+  - Page redesign as per Earl's design
+- Added waves across announcement bar and footer
+*/
 1. Updated Recipe page
   In this version, I solve the problem that the buttons in "Our Top Ten" will overflow the block they are in.
 
