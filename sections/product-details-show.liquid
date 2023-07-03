@@ -62,47 +62,29 @@
   <!-- The first there icons only show on mobile page   -->
   <!-- They will be hidden on desktop show   -->
   <div class="mobile_detail_image_container_up">
-    <div class="image-item">
-      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/Good_Taste.svg?v=1687139227" alt="SVG Image" />
-      <p>GOOD TASTE</p>
-    </div>
-    <div class="image-item">
-      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/1.90_per_serve.svg?v=1687139227" alt="SVG Image" />
-      <p>$1.90 PER SERVE</p>
-    </div>
-    <div class="image-item">
-      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/Reusable_Accessories.svg?v=1687139227" alt="SVG Image" />
-      <p>REUSABLE ACCESSORIES</p>
-    </div>
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'icon_on_mobile_up' %}
+          <div class="image-item">
+            <img src="{{ block.settings.mobile_icon_url }}" alt="SVG Image" />
+            <p>{{ block.settings.mobile_icon_caption }}</p>
+          </div>
+      {% endcase %}
+    {% endfor %}
   </div>
 
   <!-- The six icons only show on desktop page   -->
   <!-- They will be hidden on mobile page -->
   <div class="detail_image_container">
-    <div class="image-item">
-      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/Good_Taste.svg?v=1687139227" alt="SVG Image" />
-      <p>GOOD TASTE</p>
-    </div>
-    <div class="image-item">
-      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/1.90_per_serve.svg?v=1687139227" alt="SVG Image" />
-      <p>$1.90 PER SERVE</p>
-    </div>
-    <div class="image-item">
-      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/Reusable_Accessories.svg?v=1687139227" alt="SVG Image" />
-      <p>REUSABLE ACCESSORIES</p>
-    </div>
-    <div class="image-item">
-      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/Perfect_for_Gifting.svg?v=1687139227" alt="SVG Image" />
-      <p>PERFECT FOR GIFTS</p>
-    </div>
-    <div class="image-item">
-      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/Easy_to_make.svg?v=1687139227" alt="SVG Image" />
-      <p>EASY TO MAKE</p>
-    </div>
-    <div class="image-item">
-      <img src="https://cdn.shopify.com/s/files/1/0269/9254/1757/files/Reusable_Packaging.svg?v=1687139227" alt="SVG Image" />
-      <p>REUSABLE PACKAGING</p>
-    </div>
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'icon_on_desktop' %}
+          <div class="image-item">
+            <img src="{{ block.settings.desktop_icon_url }}" alt="SVG Image" />
+            <p>{{ block.settings.desktop_icon_caption }}</p>
+          </div>
+      {% endcase %}
+    {% endfor %}
   </div>
 </div>
              
@@ -110,6 +92,40 @@
 {% schema %}
   {
     "name": "Product Details",
+    "blocks": [
+      {
+        "type": "icon_on_desktop",
+        "name": "An icon on desktop",
+        "settings": [
+          {
+            "type": "text",
+            "id": "desktop_icon_url",
+            "label": "URL of the icon"
+          },
+          {
+            "type": "text",
+            "id": "desktop_icon_caption",
+            "label": "Caption of this icon"
+          }
+        ]
+      },
+      {
+        "type": "icon_on_mobile_up",
+        "name": "An icon on mobile",
+        "settings": [
+          {
+            "type": "text",
+            "id": "mobile_icon_url",
+            "label": "URL of the icon"
+          },
+          {
+            "type": "text",
+            "id": "mobile_icon_caption",
+            "label": "Caption of this icon"
+          }
+        ]
+      }
+    ],
     "settings": [
       {
         "type": "text",

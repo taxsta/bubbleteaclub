@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 // Changelog 27/06 Version update
 Features added:
 /*
@@ -9,6 +10,10 @@ Features added:
 - Added waves across announcement bar and footer
 */
 1. Updated Recipe page
+=======
+// Changelog
+1.Updated Recipe page
+>>>>>>> Stashed changes
   In this version, I solve the problem that the buttons in "Our Top Ten" will overflow the block they are in.
 
   What I have done:
@@ -38,4 +43,12 @@ Features added:
 4. Make wave animation in announcement-bar, footer and some places in new design product pages (brown-suagr/fruit-tea/milk-tea)
   What I have done:
   1. create a new js file Assets/wave-calculate.js to calculate all waves on the page except waves on announcement-bar
-  2. create a new section wave_animation.liquid 
+  2. create a new section wave_animation.liquid
+
+Bug fix
+1. There's a problem where now adding to cart on other pages doesn't update the cart and the drawer doesn't open
+    be fixed in product-form.js
+2. The cart drawer is also bugged and for some reason, 'Your box' is now at the bottom of the screen
+    be fixed by adding a new js file add-button-operation.js in assets and call it in
+    section/main-product-new and section/main-product
+3. This issue seems to be global across all product pages and even quick add to cart on the homepage

@@ -1,3 +1,6 @@
+{% comment %}
+  1. Call add-button-operation.js in line: 553
+{% endcomment %}
 <noscript>{{ 'component-slider.css' | asset_url | stylesheet_tag }}</noscript>
   <link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
 <section id="MainProduct-{{ section.id }}" class="page-width section-{{ section.id }}-padding" data-section="{{ section.id }}">
@@ -545,6 +548,9 @@
   <script>
     sessionStorage.setItem('isNewDesignProduct', false);
   </script>
+
+  <!--The js call that avoid user clicking "Add to cart" before entire page being loaded-->
+  <script src="{{ 'add-button-operation.js' | asset_url }}"></script>
 </section>
 
 {% schema %}

@@ -1,1 +1,216 @@
-{"sections":{"main":{"type":"main-product","blocks":{"title":{"type":"title","settings":{}},"f0e891af-7c97-4238-8e0c-69048a27b5e7":{"type":"shopify:\/\/apps\/okendo-product-reviews-ugc\/blocks\/star-rating\/bb689e69-ea70-4661-8fb7-ad24a2e23c29","settings":{"product":"{{product}}"}},"price":{"type":"price","settings":{}},"fc0b0d3b-05ad-46fc-8c41-6a5374ad979c":{"type":"custom_liquid","settings":{"custom_liquid":"{{ product.metafields.product.product_component}}"}},"variant_picker":{"type":"variant_picker","settings":{"picker_type":"button"}},"quantity_selector":{"type":"quantity_selector","settings":{}},"buy_buttons":{"type":"buy_buttons","settings":{"show_dynamic_checkout":false}},"description":{"type":"description","disabled":true,"settings":{}},"541324a8-5a91-4921-90ed-63848b622e67":{"type":"collapsible_tab","settings":{"heading":"Description","icon":"chat_bubble","content":"<p>{{ product.metafields.my_fields.details | metafield_tag }}<\/p>","page":""}},"collapsible-row-1":{"type":"collapsible_tab","settings":{"heading":"Shipping & Returns","icon":"truck","content":"<p>Shipping pricing is a flat rate of $9.95 Australia-Wide with free shipping if your order more than $79. Learn more about shipping <a href=\"https:\/\/bubbleteaclub.com.au\/policies\/shipping-policy\">here.<\/a><\/p>","page":""}}},"block_order":["title","f0e891af-7c97-4238-8e0c-69048a27b5e7","price","fc0b0d3b-05ad-46fc-8c41-6a5374ad979c","variant_picker","quantity_selector","buy_buttons","description","541324a8-5a91-4921-90ed-63848b622e67","collapsible-row-1"],"settings":{"enable_sticky_info":true,"gallery_layout":"stacked","media_size":"large","mobile_thumbnails":"hide","hide_variants":true,"enable_video_looping":false,"padding_top":36,"padding_bottom":12}},"1674018308869262b8":{"type":"apps","blocks":{"66deae5b-5549-449b-b55a-34f5a80ce862":{"type":"shopify:\/\/apps\/okendo-product-reviews-ugc\/blocks\/reviews-widget\/bb689e69-ea70-4661-8fb7-ad24a2e23c29","settings":{"product":"{{product}}","widget_type":"reviews_widget"}}},"block_order":["66deae5b-5549-449b-b55a-34f5a80ce862"],"settings":{"include_margins":true}},"3b6dd678-39e3-40a4-a666-7ed3c6406884":{"type":"image-with-text","blocks":{"template--15203692085309__3b6dd678-39e3-40a4-a666-7ed3c6406884-16861931010e9b8947-0":{"type":"heading","settings":{"heading":"And there's more...","heading_size":"h1"}},"template--15203692085309__3b6dd678-39e3-40a4-a666-7ed3c6406884-16861931010e9b8947-1":{"type":"text","settings":{"text":"<p>With everything you need to have a sustainable, delicious and convenient bubble tea experience. You can use our bbt accessories however you like!<\/p>","text_style":"body"}},"template--15203692085309__3b6dd678-39e3-40a4-a666-7ed3c6406884-16861931010e9b8947-2":{"type":"button","settings":{"button_label":"Wow! View more","button_link":"shopify:\/\/collections\/bbt-accesories"}}},"block_order":["template--15203692085309__3b6dd678-39e3-40a4-a666-7ed3c6406884-16861931010e9b8947-0","template--15203692085309__3b6dd678-39e3-40a4-a666-7ed3c6406884-16861931010e9b8947-1","template--15203692085309__3b6dd678-39e3-40a4-a666-7ed3c6406884-16861931010e9b8947-2"],"settings":{"image":"shopify:\/\/shop_images\/gif-1-1661433722645.webp","height":"small","desktop_image_width":"medium","layout":"image_first","desktop_content_position":"middle","desktop_content_alignment":"left","content_layout":"overlap","color_scheme":"accent-2","mobile_content_alignment":"left","padding_top":36,"padding_bottom":36}},"031f53d9-5057-4223-8eee-06fb6026762a":{"type":"image-with-text","blocks":{"template--15203692085309__031f53d9-5057-4223-8eee-06fb6026762a-16861931010e9b8947-0":{"type":"heading","settings":{"heading":"Who are the BBT Club","heading_size":"h1"}},"template--15203692085309__031f53d9-5057-4223-8eee-06fb6026762a-16861931010e9b8947-1":{"type":"text","settings":{"text":"<p>BBT Club is Australia's leading DIY bubble tea company for anywhere and anytime.<\/p><p>The Bubble Tea Club Kit has everything you need to make <em><strong>delicious<\/strong><\/em><em> <\/em><em><strong>homemade<\/strong><\/em> bubble tea. If you<strong> love<\/strong> bubble tea and are looking for a <em><strong>make<\/strong><\/em> your own <em><strong>bubble tea kit<\/strong><\/em>, this is the place!<br\/>Join over 60,000 Bubblers (that's what we call our lovely customers!) making <em><strong>yummy<\/strong><\/em><strong> <\/strong>bubble tea with BBT Club today.<\/p>","text_style":"body"}}},"block_order":["template--15203692085309__031f53d9-5057-4223-8eee-06fb6026762a-16861931010e9b8947-0","template--15203692085309__031f53d9-5057-4223-8eee-06fb6026762a-16861931010e9b8947-1"],"settings":{"image":"shopify:\/\/shop_images\/custom_resized_d4f8e1e5-e1ca-4bc3-9a78-9ee1e4f15382.jpg","height":"small","desktop_image_width":"medium","layout":"text_first","desktop_content_position":"middle","desktop_content_alignment":"left","content_layout":"overlap","color_scheme":"accent-1","mobile_content_alignment":"left","padding_top":36,"padding_bottom":36}},"product-recommendations":{"type":"product-recommendations","settings":{"heading":"You may also like","heading_size":"h2","products_to_show":4,"columns_desktop":4,"color_scheme":"background-1","image_ratio":"square","show_secondary_image":true,"show_vendor":false,"show_rating":false,"columns_mobile":"2","padding_top":36,"padding_bottom":28}}},"order":["main","1674018308869262b8","3b6dd678-39e3-40a4-a666-7ed3c6406884","031f53d9-5057-4223-8eee-06fb6026762a","product-recommendations"]}
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "f0e891af-7c97-4238-8e0c-69048a27b5e7": {
+          "type": "shopify:\/\/apps\/okendo-product-reviews-ugc\/blocks\/star-rating\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "fc0b0d3b-05ad-46fc-8c41-6a5374ad979c": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{{ product.metafields.product.product_component}}"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "541324a8-5a91-4921-90ed-63848b622e67": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Description",
+            "icon": "chat_bubble",
+            "content": "<p>{{ product.metafields.my_fields.details | metafield_tag }}<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible-row-1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shipping & Returns",
+            "icon": "truck",
+            "content": "<p>Shipping pricing is a flat rate of $9.95 Australia-Wide with free shipping if your order more than $79. Learn more about shipping <a href=\"https:\/\/bubbleteaclub.com.au\/policies\/shipping-policy\">here.<\/a><\/p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "f0e891af-7c97-4238-8e0c-69048a27b5e7",
+        "price",
+        "fc0b0d3b-05ad-46fc-8c41-6a5374ad979c",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "description",
+        "541324a8-5a91-4921-90ed-63848b622e67",
+        "collapsible-row-1"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "gallery_layout": "stacked",
+        "media_size": "large",
+        "mobile_thumbnails": "hide",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "1674018308869262b8": {
+      "type": "apps",
+      "blocks": {
+        "66deae5b-5549-449b-b55a-34f5a80ce862": {
+          "type": "shopify:\/\/apps\/okendo-product-reviews-ugc\/blocks\/reviews-widget\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "{{product}}",
+            "widget_type": "reviews_widget"
+          }
+        }
+      },
+      "block_order": [
+        "66deae5b-5549-449b-b55a-34f5a80ce862"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "3b6dd678-39e3-40a4-a666-7ed3c6406884": {
+      "type": "image-with-text",
+      "blocks": {
+        "template--15203692085309__3b6dd678-39e3-40a4-a666-7ed3c6406884-16861931010e9b8947-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "And there's more...",
+            "heading_size": "h1"
+          }
+        },
+        "template--15203692085309__3b6dd678-39e3-40a4-a666-7ed3c6406884-16861931010e9b8947-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>With everything you need to have a sustainable, delicious and convenient bubble tea experience. You can use our bbt accessories however you like!<\/p>",
+            "text_style": "body"
+          }
+        },
+        "template--15203692085309__3b6dd678-39e3-40a4-a666-7ed3c6406884-16861931010e9b8947-2": {
+          "type": "button",
+          "settings": {
+            "button_label": "Wow! View more",
+            "button_link": "shopify:\/\/collections\/bbt-accesories"
+          }
+        }
+      },
+      "block_order": [
+        "template--15203692085309__3b6dd678-39e3-40a4-a666-7ed3c6406884-16861931010e9b8947-0",
+        "template--15203692085309__3b6dd678-39e3-40a4-a666-7ed3c6406884-16861931010e9b8947-1",
+        "template--15203692085309__3b6dd678-39e3-40a4-a666-7ed3c6406884-16861931010e9b8947-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/gif-1-1661433722645.webp",
+        "height": "small",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "overlap",
+        "color_scheme": "accent-2",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "031f53d9-5057-4223-8eee-06fb6026762a": {
+      "type": "image-with-text",
+      "blocks": {
+        "template--15203692085309__031f53d9-5057-4223-8eee-06fb6026762a-16861931010e9b8947-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Who are the BBT Club",
+            "heading_size": "h1"
+          }
+        },
+        "template--15203692085309__031f53d9-5057-4223-8eee-06fb6026762a-16861931010e9b8947-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>BBT Club is Australia's leading DIY bubble tea company for anywhere and anytime.<\/p><p>The Bubble Tea Club Kit has everything you need to make <em><strong>delicious<\/strong><\/em><em> <\/em><em><strong>homemade<\/strong><\/em> bubble tea. If you<strong> love<\/strong> bubble tea and are looking for a <em><strong>make<\/strong><\/em> your own <em><strong>bubble tea kit<\/strong><\/em>, this is the place!<br\/>Join over 60,000 Bubblers (that's what we call our lovely customers!) making <em><strong>yummy<\/strong><\/em><strong> <\/strong>bubble tea with BBT Club today.<\/p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "template--15203692085309__031f53d9-5057-4223-8eee-06fb6026762a-16861931010e9b8947-0",
+        "template--15203692085309__031f53d9-5057-4223-8eee-06fb6026762a-16861931010e9b8947-1"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/custom_resized_d4f8e1e5-e1ca-4bc3-9a78-9ee1e4f15382.jpg",
+        "height": "small",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "overlap",
+        "color_scheme": "accent-1",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "background-1",
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1674018308869262b8",
+    "3b6dd678-39e3-40a4-a666-7ed3c6406884",
+    "031f53d9-5057-4223-8eee-06fb6026762a",
+    "product-recommendations"
+  ]
+}

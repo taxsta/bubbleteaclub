@@ -1,1 +1,281 @@
-{"sections":{"banner":{"type":"main-collection-banner","settings":{"show_collection_description":true,"show_collection_image":false,"color_scheme":"accent-2"}},"collection-nav":{"type":"collection-nav","settings":{}},"ddd69ddc-d24f-4ddb-841a-ee6e6a98a249":{"type":"featured-collection","settings":{"title":"{{ section.settings.collection.title }}","heading_size":"h1","description":"","show_description":false,"description_style":"body","collection":"best-sellers","products_to_show":8,"columns_desktop":4,"full_width":false,"show_view_all":true,"view_all_style":"solid","enable_desktop_slider":false,"color_scheme":"background-1","image_ratio":"adapt","show_secondary_image":false,"show_vendor":false,"show_rating":true,"enable_quick_add":false,"columns_mobile":"2","swipe_on_mobile":true,"padding_top":36,"padding_bottom":36}},"852c1ec1-74c1-44f3-9e54-7156003a768e":{"type":"featured-collection","settings":{"title":"{{ section.settings.collection.title }}","heading_size":"h1","description":"","show_description":false,"description_style":"body","collection":"milk-tea","products_to_show":8,"columns_desktop":4,"full_width":false,"show_view_all":true,"view_all_style":"solid","enable_desktop_slider":false,"color_scheme":"background-1","image_ratio":"adapt","show_secondary_image":false,"show_vendor":false,"show_rating":true,"enable_quick_add":false,"columns_mobile":"2","swipe_on_mobile":true,"padding_top":36,"padding_bottom":36}},"cc0380aa-9739-4cf4-a425-f277be1a6cc5":{"type":"featured-collection","settings":{"title":"{{ section.settings.collection.title }}","heading_size":"h1","description":"","show_description":false,"description_style":"body","collection":"fruit-tea","products_to_show":8,"columns_desktop":4,"full_width":false,"show_view_all":true,"view_all_style":"solid","enable_desktop_slider":false,"color_scheme":"background-1","image_ratio":"adapt","show_secondary_image":false,"show_vendor":false,"show_rating":true,"enable_quick_add":false,"columns_mobile":"2","swipe_on_mobile":true,"padding_top":36,"padding_bottom":36}},"867e63a8-47d8-4928-9db9-7c144522b4d4":{"type":"featured-collection","settings":{"title":"{{ section.settings.collection.title }}","heading_size":"h1","description":"","show_description":false,"description_style":"body","collection":"bundles","products_to_show":8,"columns_desktop":4,"full_width":false,"show_view_all":true,"view_all_style":"solid","enable_desktop_slider":false,"color_scheme":"background-1","image_ratio":"adapt","show_secondary_image":false,"show_vendor":false,"show_rating":true,"enable_quick_add":false,"columns_mobile":"2","swipe_on_mobile":true,"padding_top":36,"padding_bottom":36}},"4de90eaf-374e-4806-84fb-d77c4a7836c6":{"type":"featured-collection","settings":{"title":"{{ section.settings.collection.title }}","heading_size":"h1","description":"","show_description":false,"description_style":"body","collection":"topping","products_to_show":8,"columns_desktop":4,"full_width":false,"show_view_all":true,"view_all_style":"solid","enable_desktop_slider":false,"color_scheme":"background-1","image_ratio":"adapt","show_secondary_image":false,"show_vendor":false,"show_rating":true,"enable_quick_add":false,"columns_mobile":"2","swipe_on_mobile":true,"padding_top":36,"padding_bottom":36}},"42c22bd4-13ac-4f73-a1e0-c0f09fa8ad0b":{"type":"featured-collection","settings":{"title":"Individual Items","heading_size":"h1","description":"","show_description":false,"description_style":"body","collection":"top-up-shop","products_to_show":8,"columns_desktop":4,"full_width":false,"show_view_all":true,"view_all_style":"solid","enable_desktop_slider":false,"color_scheme":"background-1","image_ratio":"adapt","show_secondary_image":false,"show_vendor":false,"show_rating":true,"enable_quick_add":false,"columns_mobile":"2","swipe_on_mobile":true,"padding_top":36,"padding_bottom":36}},"0da2fe42-df1b-4708-98c5-ba89754d1c72":{"type":"featured-collection","settings":{"title":"{{ section.settings.collection.title }}","heading_size":"h1","description":"","show_description":false,"description_style":"body","collection":"bbt-accesories","products_to_show":8,"columns_desktop":4,"full_width":false,"show_view_all":true,"view_all_style":"solid","enable_desktop_slider":false,"color_scheme":"background-1","image_ratio":"adapt","show_secondary_image":false,"show_vendor":false,"show_rating":true,"enable_quick_add":false,"columns_mobile":"2","swipe_on_mobile":true,"padding_top":36,"padding_bottom":36}},"a902400e-ad54-48d6-82c8-a2fa10daa0b2":{"type":"multicolumn","blocks":{"39cce48e-5d84-42a8-b8e4-93d6220276ad":{"type":"column","settings":{"title":"What are the discounts?","text":"<p>- Under $100= 10% Off , Discount Code: 1EOFY2023<br\/>- Over $100= 15%, Discount Code: 2EOFY2023<br\/>- Over $200= 20%, Discount Code: 3EOFY2023<\/p>","link_label":"","link":""}},"template--15216587898941__a902400e-ad54-48d6-82c8-a2fa10daa0b2-16868122883756f55c-0":{"type":"column","settings":{"title":"What is available","text":"<p>Unleash your inner barista with our exclusive collection of bubble tea kits, specially curated to bring the bubble tea experience right to your doorstep. Our products range from classic to exotic, ensuring there's a kit for everyone's palate. This EOFY, we're taking your love for bubble tea to the next level with significant discounts on our diverse selection. With top-quality ingredients sourced directly from Taiwan, and a user-friendly approach, our bubble tea kits make it easy to prepare your favorite boba drinks at home. Explore our variety of bubble tea kits this EOFY, and immerse yourself in the authentic, flavorful world of homemade bubble tea.<\/p>","link_label":"","link":""}},"template--15216587898941__a902400e-ad54-48d6-82c8-a2fa10daa0b2-16868122883756f55c-1":{"type":"column","settings":{"title":"What's included","text":"<p>Our bubble tea kits are perfect for both beginners and bubble tea connoisseurs. Each kit comes with a detailed step-by-step guide, helping you create delicious bubble tea in the comfort of your home. This EOFY sale, we're offering unbeatable deals that allow you to experience a variety of flavors at an affordable price. From the creamy taro to the refreshing matcha, or the rich brown sugar milk tea - each kit provides a unique taste of Taiwanese culture. Take advantage of these special offers, and become your own bubble tea master.<\/p>","link_label":"","link":""}},"template--15216587898941__a902400e-ad54-48d6-82c8-a2fa10daa0b2-16868122883756f55c-2":{"type":"column","settings":{"title":"Enhance your experience","text":"<p>Seize the opportunity this EOFY to save on your favourite bubble tea kits. We believe that good bubble tea should not just be a café luxury but an at-home delight. And we're here to make that dream a reality. Our EOFY sale is the perfect chance to explore different flavours, enhance your bubble tea making skills, and most importantly, enjoy the richness of high-quality bubble tea. Shop now from our wide range of bubble tea kits and experience the joy of creating your favorite boba drinks at home.<\/p>","link_label":"","link":""}}},"block_order":["39cce48e-5d84-42a8-b8e4-93d6220276ad","template--15216587898941__a902400e-ad54-48d6-82c8-a2fa10daa0b2-16868122883756f55c-0","template--15216587898941__a902400e-ad54-48d6-82c8-a2fa10daa0b2-16868122883756f55c-1","template--15216587898941__a902400e-ad54-48d6-82c8-a2fa10daa0b2-16868122883756f55c-2"],"settings":{"title":"More about our EOFY Sales","heading_size":"h1","image_width":"full","image_ratio":"adapt","columns_desktop":3,"column_alignment":"left","background_style":"primary","button_label":"","button_link":"","color_scheme":"background-1","columns_mobile":"1","swipe_on_mobile":false,"padding_top":36,"padding_bottom":36}}},"order":["banner","collection-nav","ddd69ddc-d24f-4ddb-841a-ee6e6a98a249","852c1ec1-74c1-44f3-9e54-7156003a768e","cc0380aa-9739-4cf4-a425-f277be1a6cc5","867e63a8-47d8-4928-9db9-7c144522b4d4","4de90eaf-374e-4806-84fb-d77c4a7836c6","42c22bd4-13ac-4f73-a1e0-c0f09fa8ad0b","0da2fe42-df1b-4708-98c5-ba89754d1c72","a902400e-ad54-48d6-82c8-a2fa10daa0b2"]}
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "accent-2"
+      }
+    },
+    "collection-nav": {
+      "type": "collection-nav",
+      "settings": {
+      }
+    },
+    "ddd69ddc-d24f-4ddb-841a-ee6e6a98a249": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "{{ section.settings.collection.title }}",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "best-sellers",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": true,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "852c1ec1-74c1-44f3-9e54-7156003a768e": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "{{ section.settings.collection.title }}",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "milk-tea",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": true,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "cc0380aa-9739-4cf4-a425-f277be1a6cc5": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "{{ section.settings.collection.title }}",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "fruit-tea",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": true,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "867e63a8-47d8-4928-9db9-7c144522b4d4": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "{{ section.settings.collection.title }}",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "bundles",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": true,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "4de90eaf-374e-4806-84fb-d77c4a7836c6": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "{{ section.settings.collection.title }}",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "topping",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": true,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "42c22bd4-13ac-4f73-a1e0-c0f09fa8ad0b": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Individual Items",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "top-up-shop",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": true,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "0da2fe42-df1b-4708-98c5-ba89754d1c72": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "{{ section.settings.collection.title }}",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "bbt-accesories",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": true,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "a902400e-ad54-48d6-82c8-a2fa10daa0b2": {
+      "type": "multicolumn",
+      "blocks": {
+        "39cce48e-5d84-42a8-b8e4-93d6220276ad": {
+          "type": "column",
+          "settings": {
+            "title": "What are the discounts?",
+            "text": "<p>- Under $100= 10% Off , Discount Code: 1EOFY2023<br\/>- Over $100= 15%, Discount Code: 2EOFY2023<br\/>- Over $200= 20%, Discount Code: 3EOFY2023<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--15216587898941__a902400e-ad54-48d6-82c8-a2fa10daa0b2-16868122883756f55c-0": {
+          "type": "column",
+          "settings": {
+            "title": "What is available",
+            "text": "<p>Unleash your inner barista with our exclusive collection of bubble tea kits, specially curated to bring the bubble tea experience right to your doorstep. Our products range from classic to exotic, ensuring there's a kit for everyone's palate. This EOFY, we're taking your love for bubble tea to the next level with significant discounts on our diverse selection. With top-quality ingredients sourced directly from Taiwan, and a user-friendly approach, our bubble tea kits make it easy to prepare your favorite boba drinks at home. Explore our variety of bubble tea kits this EOFY, and immerse yourself in the authentic, flavorful world of homemade bubble tea.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--15216587898941__a902400e-ad54-48d6-82c8-a2fa10daa0b2-16868122883756f55c-1": {
+          "type": "column",
+          "settings": {
+            "title": "What's included",
+            "text": "<p>Our bubble tea kits are perfect for both beginners and bubble tea connoisseurs. Each kit comes with a detailed step-by-step guide, helping you create delicious bubble tea in the comfort of your home. This EOFY sale, we're offering unbeatable deals that allow you to experience a variety of flavors at an affordable price. From the creamy taro to the refreshing matcha, or the rich brown sugar milk tea - each kit provides a unique taste of Taiwanese culture. Take advantage of these special offers, and become your own bubble tea master.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--15216587898941__a902400e-ad54-48d6-82c8-a2fa10daa0b2-16868122883756f55c-2": {
+          "type": "column",
+          "settings": {
+            "title": "Enhance your experience",
+            "text": "<p>Seize the opportunity this EOFY to save on your favourite bubble tea kits. We believe that good bubble tea should not just be a café luxury but an at-home delight. And we're here to make that dream a reality. Our EOFY sale is the perfect chance to explore different flavours, enhance your bubble tea making skills, and most importantly, enjoy the richness of high-quality bubble tea. Shop now from our wide range of bubble tea kits and experience the joy of creating your favorite boba drinks at home.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "39cce48e-5d84-42a8-b8e4-93d6220276ad",
+        "template--15216587898941__a902400e-ad54-48d6-82c8-a2fa10daa0b2-16868122883756f55c-0",
+        "template--15216587898941__a902400e-ad54-48d6-82c8-a2fa10daa0b2-16868122883756f55c-1",
+        "template--15216587898941__a902400e-ad54-48d6-82c8-a2fa10daa0b2-16868122883756f55c-2"
+      ],
+      "settings": {
+        "title": "More about our EOFY Sales",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "collection-nav",
+    "ddd69ddc-d24f-4ddb-841a-ee6e6a98a249",
+    "852c1ec1-74c1-44f3-9e54-7156003a768e",
+    "cc0380aa-9739-4cf4-a425-f277be1a6cc5",
+    "867e63a8-47d8-4928-9db9-7c144522b4d4",
+    "4de90eaf-374e-4806-84fb-d77c4a7836c6",
+    "42c22bd4-13ac-4f73-a1e0-c0f09fa8ad0b",
+    "0da2fe42-df1b-4708-98c5-ba89754d1c72",
+    "a902400e-ad54-48d6-82c8-a2fa10daa0b2"
+  ]
+}

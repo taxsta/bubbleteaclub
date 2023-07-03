@@ -17,6 +17,8 @@ class CartItems extends HTMLElement {
   constructor() {
     super();
 
+    this.isOnChangeCalled = false;
+
     this.lineItemStatusElement =
       document.getElementById("shopping-cart-line-item-status") ||
       document.getElementById("CartDrawer-LineItemStatus");
@@ -40,8 +42,9 @@ class CartItems extends HTMLElement {
       event.target.dataset.variant,
       event.target.dataset.index,
       event.target.value,
-      document.activeElement.getAttribute("name")
-    );
+      document.activeElement.getAttribute("name"),
+      this.isOnChangeCalled = true,
+  );
   }
 
   getSectionsToRender() {
@@ -85,6 +88,7 @@ class CartItems extends HTMLElement {
       })
       .then(async (state) => {
         let parsedState = JSON.parse(state);
+        console.log(parsedState)
         if(parsedState.total_price < 10000){
           let giftFound = false;
           parsedState.items.forEach(function(item,index){

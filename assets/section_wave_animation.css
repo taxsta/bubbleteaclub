@@ -7,10 +7,11 @@
   transform: rotate(180deg);
 }
 @media screen and (min-width: 840px) and (max-width: 1200px) {
-.wave-reverse {
-  margin-bottom: -4%;
-  transform: rotate(180deg);
-}
+  .wave-reverse {
+    margin-top: -3px;
+    margin-bottom: -4%;
+    transform: rotate(180deg);
+  }
 }
 
 @media screen and (min-width: 550px) and (max-width: 839px) {
@@ -20,6 +21,7 @@
   }
 
   .wave-reverse {
+    margin-top: -3px;
     margin-bottom: -13%;
   }
 }
@@ -31,6 +33,7 @@
   }
   
   .wave-reverse {
+    margin-top: -3px;
     margin-bottom: -20%;
   }
 }

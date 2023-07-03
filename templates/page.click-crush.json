@@ -1,1 +1,77 @@
-{"sections":{"41cfabcd-1c70-4c6c-b167-8ca76a8cb909":{"type":"rich-text","blocks":{"template--15200387760189__41cfabcd-1c70-4c6c-b167-8ca76a8cb909-16839580649614df94-0":{"type":"heading","settings":{"heading":"<p>Start Clicking, Get Gifts<\/p>","heading_size":"h1"}},"template--15200387760189__41cfabcd-1c70-4c6c-b167-8ca76a8cb909-16839580649614df94-1":{"type":"text","disabled":true,"settings":{"text":"<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"}},"template--15200387760189__41cfabcd-1c70-4c6c-b167-8ca76a8cb909-16839580649614df94-2":{"type":"button","settings":{"button_label":"Learn More","button_link":"#promo-container","button_style_secondary":false,"button_label_2":"","button_link_2":"","button_style_secondary_2":false}}},"block_order":["template--15200387760189__41cfabcd-1c70-4c6c-b167-8ca76a8cb909-16839580649614df94-0","template--15200387760189__41cfabcd-1c70-4c6c-b167-8ca76a8cb909-16839580649614df94-1","template--15200387760189__41cfabcd-1c70-4c6c-b167-8ca76a8cb909-16839580649614df94-2"],"custom_css":[".gradient {background: inherit !important;}"],"settings":{"desktop_content_position":"center","content_alignment":"center","color_scheme":"accent-2","full_width":true,"padding_top":68,"padding_bottom":52}},"8466bc5c-d8ed-4417-b30b-1a0cb0ad87d8":{"type":"custom-liquid","custom_css":["h5 {font-size: 20px; text-align: center;}",".gradient {background: inherit !important;}","ul {margin: auto; width: fit-content; border: 1px solid #050400; padding: 20px; border-radius: 10px; list-style: none;}","span.time {display: block;}","li.countdown-option {text-align: center; display: inline-block; font-size: 36px; margin: 0px 20px; color: #050400;}","@media screen and (max-width: 749px) {li.countdown-option {text-align: center; display: inline-block; font-size: 23px; margin: 0px 3px; color: #050400; }}"],"settings":{"custom_liquid":"<!-- Display the countdown timer in an element -->\n<h5 class=\"rich-text__heading rte h4\">Click Crush ends in:<\/h5>\n<div id=\"countdown\">\n    <ul>\n      <li class=\"countdown-option\">\n<span id=\"days\" class=\"time\"><\/span>Days<\/li>\n      <li class=\"countdown-option\">\n<span id=\"hours\" class=\"time\"><\/span>Hours<\/li>\n      <li class=\"countdown-option\">\n<span id=\"minutes\" class=\"time\"><\/span>Minutes<\/li>\n      <li class=\"countdown-option\">\n<span id=\"seconds\" class=\"time\"><\/span>Seconds<\/li>\n    <\/ul>\n  <\/div>\n\n<script>\n\/\/ Set the date we're counting down to\nvar countDownDate = new Date(\"May 19, 2023 00:00:00\").getTime();\n\n\/\/ Update the count down every 1 second\nvar x = setInterval(function() {\n\n  \/\/ Get today's date and time\n  var now = new Date().getTime();\n\n  \/\/ Find the distance between now and the count down date\n  var distance = countDownDate - now;\n\n  \/\/ Time calculations for days, hours, minutes and seconds\n  var days = Math.floor(distance \/ (1000 * 60 * 60 * 24));\n  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) \/ (1000 * 60 * 60));\n  var minutes = Math.floor((distance % (1000 * 60 * 60)) \/ (1000 * 60));\n  var seconds = Math.floor((distance % (1000 * 60)) \/ 1000);\n\n  \/\/ Display the result in the element with id=\"demo\"\n  document.getElementById(\"days\").innerHTML = days\ndocument.getElementById(\"hours\").innerHTML = hours\ndocument.getElementById(\"minutes\").innerHTML = minutes\ndocument.getElementById(\"seconds\").innerHTML = seconds\n\n  \/\/ If the count down is finished, write some text\n  if (distance < 0) {\n    clearInterval(x);\n    document.getElementById(\"demo\").innerHTML = \"We've Launched!\";\n  }\n}, 1000);\n<\/script>","color_scheme":"background-1","padding_top":40,"padding_bottom":52}},"2e2d44e1-da0f-4c37-94f4-77a8e304ad86":{"type":"click-crush-landing-page","settings":{}}},"order":["41cfabcd-1c70-4c6c-b167-8ca76a8cb909","8466bc5c-d8ed-4417-b30b-1a0cb0ad87d8","2e2d44e1-da0f-4c37-94f4-77a8e304ad86"]}
+{
+  "sections": {
+    "41cfabcd-1c70-4c6c-b167-8ca76a8cb909": {
+      "type": "rich-text",
+      "blocks": {
+        "template--15200387760189__41cfabcd-1c70-4c6c-b167-8ca76a8cb909-16839580649614df94-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "<p>Start Clicking, Get Gifts<\/p>",
+            "heading_size": "h1"
+          }
+        },
+        "template--15200387760189__41cfabcd-1c70-4c6c-b167-8ca76a8cb909-16839580649614df94-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+          }
+        },
+        "template--15200387760189__41cfabcd-1c70-4c6c-b167-8ca76a8cb909-16839580649614df94-2": {
+          "type": "button",
+          "settings": {
+            "button_label": "Learn More",
+            "button_link": "#promo-container",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--15200387760189__41cfabcd-1c70-4c6c-b167-8ca76a8cb909-16839580649614df94-0",
+        "template--15200387760189__41cfabcd-1c70-4c6c-b167-8ca76a8cb909-16839580649614df94-1",
+        "template--15200387760189__41cfabcd-1c70-4c6c-b167-8ca76a8cb909-16839580649614df94-2"
+      ],
+      "custom_css": [
+        ".gradient {background: inherit !important;}"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "accent-2",
+        "full_width": true,
+        "padding_top": 68,
+        "padding_bottom": 52
+      }
+    },
+    "8466bc5c-d8ed-4417-b30b-1a0cb0ad87d8": {
+      "type": "custom-liquid",
+      "custom_css": [
+        "h5 {font-size: 20px; text-align: center;}",
+        ".gradient {background: inherit !important;}",
+        "ul {margin: auto; width: fit-content; border: 1px solid #050400; padding: 20px; border-radius: 10px; list-style: none;}",
+        "span.time {display: block;}",
+        "li.countdown-option {text-align: center; display: inline-block; font-size: 36px; margin: 0px 20px; color: #050400;}",
+        "@media screen and (max-width: 749px) {li.countdown-option {text-align: center; display: inline-block; font-size: 23px; margin: 0px 3px; color: #050400; }}"
+      ],
+      "settings": {
+        "custom_liquid": "<!-- Display the countdown timer in an element -->\n<h5 class=\"rich-text__heading rte h4\">Click Crush ends in:<\/h5>\n<div id=\"countdown\">\n    <ul>\n      <li class=\"countdown-option\">\n<span id=\"days\" class=\"time\"><\/span>Days<\/li>\n      <li class=\"countdown-option\">\n<span id=\"hours\" class=\"time\"><\/span>Hours<\/li>\n      <li class=\"countdown-option\">\n<span id=\"minutes\" class=\"time\"><\/span>Minutes<\/li>\n      <li class=\"countdown-option\">\n<span id=\"seconds\" class=\"time\"><\/span>Seconds<\/li>\n    <\/ul>\n  <\/div>\n\n<script>\n\/\/ Set the date we're counting down to\nvar countDownDate = new Date(\"May 19, 2023 00:00:00\").getTime();\n\n\/\/ Update the count down every 1 second\nvar x = setInterval(function() {\n\n  \/\/ Get today's date and time\n  var now = new Date().getTime();\n\n  \/\/ Find the distance between now and the count down date\n  var distance = countDownDate - now;\n\n  \/\/ Time calculations for days, hours, minutes and seconds\n  var days = Math.floor(distance \/ (1000 * 60 * 60 * 24));\n  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) \/ (1000 * 60 * 60));\n  var minutes = Math.floor((distance % (1000 * 60 * 60)) \/ (1000 * 60));\n  var seconds = Math.floor((distance % (1000 * 60)) \/ 1000);\n\n  \/\/ Display the result in the element with id=\"demo\"\n  document.getElementById(\"days\").innerHTML = days\ndocument.getElementById(\"hours\").innerHTML = hours\ndocument.getElementById(\"minutes\").innerHTML = minutes\ndocument.getElementById(\"seconds\").innerHTML = seconds\n\n  \/\/ If the count down is finished, write some text\n  if (distance < 0) {\n    clearInterval(x);\n    document.getElementById(\"demo\").innerHTML = \"We've Launched!\";\n  }\n}, 1000);\n<\/script>",
+        "color_scheme": "background-1",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "2e2d44e1-da0f-4c37-94f4-77a8e304ad86": {
+      "type": "click-crush-landing-page",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "41cfabcd-1c70-4c6c-b167-8ca76a8cb909",
+    "8466bc5c-d8ed-4417-b30b-1a0cb0ad87d8",
+    "2e2d44e1-da0f-4c37-94f4-77a8e304ad86"
+  ]
+}
